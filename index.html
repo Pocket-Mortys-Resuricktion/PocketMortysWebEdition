@@ -1,0 +1,937 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pocket Mortys by Firejane</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+.dvo{position:absolute;inset:0;z-index:8;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;line-height:normal}
+.dvp{position:relative;width:min(92cqw,calc(92cqh*1203/752));aspect-ratio:1203/752;container-type:inline-size;animation:dvin .18s ease-out}
+@keyframes dvin{from{transform:scale(.9);opacity:0}}
+.dvbg{position:absolute;left:0;top:0;width:100%;height:100%;display:block;pointer-events:none}
+.dvb,.dvh{position:absolute;padding:0;margin:0;min-height:0;border:0;background:none;cursor:pointer;box-shadow:none;-webkit-tap-highlight-color:transparent}
+.dvb:hover,.dvb:active,.dvb:focus{background:none}.dvb img{width:100%;display:block;transition:transform .08s,filter .08s}.dvb:active img{transform:scale(.95)}.dvb:hover img{filter:brightness(1.1)}
+.dvh{border-radius:10px}.dvh:active{background:rgba(255,255,255,.3)}
+.dvt{border-radius:0;clip-path:polygon(99.5% 40.1%,98.9% 68.7%,96.5% 74.3%,86.8% 82.2%,81.3% 84.9%,75.3% 87.0%,29.5% 98.2%,23.3% 99.1%,17.1% 99.1%,14.2% 98.7%,6.9% 95.5%,2.2% 90.1%,1.2% 82.9%,1.2% 18.7%,2.0% 12.0%,3.5% 7.3%,5.1% 5.6%,14.7% 1.4%,17.4% 0.7%,23.5% 0.7%,70.7% 11.7%,79.0% 14.1%,85.0% 16.4%,92.6% 21.7%,94.8% 24.2%,98.9% 30.7%)}
+.dvt:active{background:none}.dvt img{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:0;pointer-events:none}.dvt:active img,.dvt.fl img{opacity:1}
+.dvhi{position:absolute;left:25.77%;right:21.86%;top:9.57%;height:6.91%;display:flex;align-items:center;justify-content:center;color:#fff;font:500 2.6cqw/1 Fredoka,system-ui,sans-serif;pointer-events:none;white-space:nowrap;overflow:hidden}
+.dvm{position:absolute;left:20.70%;top:16.62%;width:63.01%;height:63.70%;background:#0b4062;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;font-size:3.4cqw;text-shadow:0 2px 0 #000;font-family:Fredoka,'Baloo 2','Trebuchet MS',system-ui,sans-serif}
+
+:root{--bg:#dfeaf5;--fg:#1b2340;--card:#fff;--mut:#5d6788;--ac:#f2c230;--acfg:#1b2340;--bd:#b9c9de;--hp:#3fae6a;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#151b30;--fg:#eef1fa;--card:#212944;--mut:#9aa6c9;--bd:#33406a}}
+:root[data-theme="dark"]{--bg:#151b30;--fg:#eef1fa;--card:#212944;--mut:#9aa6c9;--bd:#33406a}
+html{scroll-padding-top:env(safe-area-inset-top,0px);color-scheme:light dark}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.4 Fredoka,system-ui,sans-serif}
+#a{max-width:480px;margin:0 auto;padding:14px}
+h1{font-size:22px;margin:4px 0 12px}
+.c{background:var(--card);border:2px solid var(--bd);border-left-width:6px;border-radius:14px;padding:10px 12px;margin:8px 0}
+.r-common{border-left-color:#3b82f6}.r-rare{border-left-color:#22a45d}.r-epic{border-left-color:#e0a800}.r-exotic{border-left-color:#9b4de0}
+.rb,.tb{display:inline-flex;align-items:center;gap:3px;font-size:12px;font-weight:600;padding:1px 8px 1px 4px;border-radius:999px;border:1.5px solid var(--rcol,var(--bd));color:var(--fg);vertical-align:middle}
+.tb{padding-left:6px}.tb svg{width:15px;height:15px}
+.rb svg{width:15px;height:15px;fill:var(--rcol)}
+.rb-common{--rcol:#3b82f6}.rb-rare{--rcol:#22a45d}.rb-epic{--rcol:#e0a800}.rb-exotic{--rcol:#9b4de0}
+@keyframes glow{50%{box-shadow:0 0 8px var(--rcol)}}
+@keyframes twinkle{50%{transform:scale(1.25) rotate(14deg);filter:brightness(1.35)}}
+.rb-rare,.rb-epic,.rb-exotic{animation:glow 2.4s ease-in-out infinite}
+.rb-rare svg,.rb-epic svg,.rb-exotic svg{animation:twinkle 2.4s ease-in-out infinite}
+.rb-exotic,.rb-exotic svg{animation-duration:1.7s}
+@media (prefers-reduced-motion:reduce){.rb,.rb svg{animation:none!important}}
+.big{font-size:42px;line-height:1}
+.pic{height:62px;width:auto}
+.ico{min-width:52px;text-align:center}
+small{color:var(--mut)}
+.stt{width:20px;height:20px;vertical-align:-5px;margin-left:5px}.mvx .stt{width:16px;height:16px;vertical-align:-3px;margin-left:2px}
+.log .stt{width:16px;height:16px;vertical-align:-3px;margin-left:2px}button:disabled{opacity:.5}
+.bar{height:10px;background:var(--bd);border-radius:6px;overflow:hidden;margin:6px 0 2px}
+.bar i{display:block;height:100%;background:var(--hp)}
+button{font:inherit;font-weight:600;background:var(--ac);color:var(--acfg);border:0;border-radius:12px;padding:11px 14px;margin:4px 4px 0 0;min-height:44px}
+button.s{background:var(--card);color:var(--fg);border:2px solid var(--bd)}
+button svg{width:14px;height:14px;vertical-align:-2px}
+.row{display:flex;gap:10px;align-items:center}
+.log{min-height:76px;font-size:14px}
+.iv{font-size:13px;color:var(--mut)}
+.map{position:relative;border-radius:14px;overflow:hidden;border:2px solid var(--bd);margin:8px 0;line-height:0}
+.map .bgm{width:100%;display:block}
+.spot{position:absolute;transform:translate(-50%,-50%);width:38px;height:38px;border-radius:50%;padding:0;margin:0;min-height:0;display:flex;align-items:center;justify-content:center;background:var(--card);color:var(--fg);border:2px solid var(--ac);font-size:18px;line-height:1;box-shadow:0 2px 4px rgba(0,0,0,.35)}
+.spl{position:absolute;transform:translate(-50%,0);font-size:10px;line-height:1.1;font-weight:600;color:#fff;text-shadow:0 0 3px #000,0 0 3px #000;pointer-events:none;white-space:nowrap}
+.mk{position:absolute;width:9.45%;transform:translate(-50%,-90%);transition:left .5s ease,top .5s ease,transform .5s ease;pointer-events:none;line-height:1}
+.mk .pic{height:auto;width:100%;display:block}.mk .big{font-size:26px}
+.hflash{position:absolute;inset:0;background:#fff}
+.ttl{position:fixed;inset:0;z-index:10;background:#000;overflow:hidden}
+.ttl img{width:100%;height:100%;object-fit:contain;display:block}
+.tbtn{all:unset;box-sizing:border-box;position:absolute;display:flex;align-items:center;justify-content:center;cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation;user-select:none;-webkit-user-select:none;
+border:calc(var(--k,.5)*8px) solid #000;border-radius:999px;background:linear-gradient(#ffb800 0%,#ff9a00 55%,#ff7a00 100%);box-shadow:inset 0 0 0 calc(var(--k,.5)*6px) #fff,inset 0 calc(var(--k,.5)*-10px) calc(var(--k,.5)*6px) calc(var(--k,.5)*6px) rgba(255,90,0,.25);
+font-family:Fredoka,system-ui,sans-serif;font-weight:700;color:#111;font-size:calc(var(--k,.5)*92px);letter-spacing:calc(var(--k,.5)*3px);line-height:1}
+.tbtn .tic{position:absolute;left:calc(var(--k,.5)*24px);top:50%;width:calc(var(--k,.5)*112px);height:calc(var(--k,.5)*112px);transform:translateY(-50%)}
+.tbtn span{display:block;margin-left:calc(var(--k,.5)*70px);text-shadow:0 calc(var(--k,.5)*4px) 0 rgba(170,70,0,.45)}
+.tbtn:active,.tbtn.fl{background:linear-gradient(#fff27a,#ffcf1f)}
+.tbtn:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.hbtn{all:unset;box-sizing:border-box;position:absolute;display:flex;align-items:center;justify-content:center;cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation;user-select:none;-webkit-user-select:none;
+border:calc(var(--k,.5)*8.3px) solid #000;border-radius:calc(var(--k,.5)*40px);transform:skewX(23.4deg);box-shadow:inset 0 0 0 calc(var(--k,.5)*3px) #fff}
+.hbtn>*{display:block;transform:skewX(-23.4deg)}
+.hg{background:linear-gradient(#30fb34,#19f615)}
+.hr{background:linear-gradient(#fe0679,#fc0204)}
+.hg span{font-family:Georgia,"Times New Roman",serif;font-weight:700;font-size:calc(var(--k,.5)*72px);line-height:1;color:#06200a}
+.hr svg{width:calc(var(--k,.5)*92px);height:calc(var(--k,.5)*68px)}
+.hbtn:active,.hbtn.fl{background:linear-gradient(#fff27a,#ffcf1f);filter:none}
+.hbtn:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.sfg{background:linear-gradient(#30fb34,#19f615)}
+.sfb{background:linear-gradient(#08fafe,#40a5fd)}
+.sfg span,.sfb span{font-family:Fredoka,system-ui,sans-serif;font-weight:600;font-size:calc(var(--k,.5)*55px);line-height:1;color:#050505}
+.sfg span{text-shadow:calc(var(--k,.5)*3px) calc(var(--k,.5)*4px) 0 rgba(0,120,0,.55)}
+.sfy{background:linear-gradient(#fffa7a,#fecc09)}
+.sfy span{font-family:Fredoka,system-ui,sans-serif;font-weight:600;font-size:calc(var(--k,.5)*55px);line-height:1;color:#050505;text-shadow:calc(var(--k,.5)*3px) calc(var(--k,.5)*4px) 0 rgba(120,90,0,.55)}
+.sfy:active,.sfy.fl{background:linear-gradient(#fff,#fff3a0)}
+.sfb span{text-shadow:calc(var(--k,.5)*3px) calc(var(--k,.5)*4px) 0 rgba(10,70,110,.6)}
+.sbtn{all:unset;position:absolute;display:block;cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation;user-select:none;-webkit-user-select:none}
+.sbtn svg{display:block;width:100%;height:100%}
+.sbtn:active,.sbtn.fl{filter:none}.sbtn:active #sfrg stop:first-child,.sbtn.fl #sfrg stop:first-child{stop-color:#fff27a}.sbtn:active #sfrg stop:last-child,.sbtn.fl #sfrg stop:last-child{stop-color:#ffcf1f}
+.lbb{pointer-events:none}.lbb path,.lbb text{pointer-events:auto}.lbb:active #suG stop:first-child,.lbb.fl #suG stop:first-child,.lbb:active #suR stop:first-child,.lbb.fl #suR stop:first-child{stop-color:#fff27a}.lbb:active #suG stop:last-child,.lbb.fl #suG stop:last-child,.lbb:active #suR stop:last-child,.lbb.fl #suR stop:last-child{stop-color:#ffcf1f}.lbb:active #lbgG stop:first-child,.lbb.fl #lbgG stop:first-child,.lbb:active #lbgR stop:first-child,.lbb.fl #lbgR stop:first-child{stop-color:#fff27a}.lbb:active #lbgG stop:last-child,.lbb.fl #lbgG stop:last-child,.lbb:active #lbgR stop:last-child,.lbb.fl #lbgR stop:last-child{stop-color:#ffcf1f}
+.sbtn:focus-visible{outline:3px solid #fff;outline-offset:2px}
+
+.shop{background:repeating-linear-gradient(45deg,#ffe35c 0 18px,#ffd23a 18px 36px);border-radius:16px;padding:10px;margin:8px 0}
+.shdr{font-weight:600;font-size:20px;color:#fff;text-shadow:0 2px 0 #c0408a;background:linear-gradient(90deg,#ff6fb0,#ff9ad0);border:3px solid #fff;border-radius:14px;padding:8px 14px;margin-bottom:8px}
+.it{display:flex;align-items:center;gap:10px;width:100%;text-align:left;background:linear-gradient(#00d8ff,#29a8ff);color:#0b2a44;border:3px solid #fff;border-radius:14px;padding:8px 10px;margin:6px 0;min-height:60px;font-weight:400}
+.it.sel{background:linear-gradient(#fff27a,#ffcf1f)}
+.it svg{width:44px;height:44px;flex:none}.it img{width:50px;height:50px;flex:none}.it b{display:block;font-size:16px}.it small{display:block;color:#0b2a44;opacity:.85}
+.pr{margin-left:auto;display:flex;align-items:center;gap:4px;font-weight:600}.pr svg{width:22px;height:22px}
+.sbar{display:flex;align-items:center;gap:8px;margin-top:8px}
+.sch{flex:1;display:flex;align-items:center;gap:8px;background:#7cc43c;border:3px solid #fff;border-radius:12px;padding:4px 10px;font-weight:600;color:#1d3b05}
+.sch span{background:#fff;color:#111;border-radius:8px;padding:2px 10px;margin-left:auto}
+.buyb{background:linear-gradient(#e4e6ea,#9aa0a8);color:#111;border:2px solid #fff;border-radius:12px;padding:10px 22px;margin:0}
+.msg{background:#fde4e4;color:#222;border-radius:12px;padding:12px;text-align:center;margin-top:8px}
+.mapfs{position:fixed;inset:0;z-index:5;background:#000;container-type:size;overflow:hidden;line-height:0}
+.mapsc{position:absolute;inset:0;overflow:auto;scrollbar-width:none;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.mapsc::-webkit-scrollbar{display:none}
+.mapin{position:relative;width:100%;aspect-ratio:845/550;width:max(100cqw,calc(100cqh*845/550))}
+.mapin .bgm{width:100%;height:100%;display:block}
+.mapfs .spot{width:44px;height:44px;font-size:21px}
+.mapfs .spl{font-size:11px}
+.mapfs .mk{width:min(9.45%,67.2px)}
+.mapfs .mk .big{font-size:40px}
+.toast{position:absolute;left:50%;bottom:max(18px,env(safe-area-inset-bottom,0px));transform:translateX(-50%);max-width:88%;background:var(--card);color:var(--fg);border:2px solid var(--bd);border-radius:12px;padding:10px 14px;font-size:14px;line-height:1.3;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.35);pointer-events:none;animation:toast 3.5s forwards}
+@keyframes toast{0%,80%{opacity:1}100%{opacity:0}}
+.buyb.fl{background:linear-gradient(#fff27a,#ffcf1f)}.subk.flash{background:transparent!important;-webkit-backdrop-filter:grayscale(1) brightness(2.5) sepia(1) saturate(8);backdrop-filter:grayscale(1) brightness(2.5) sepia(1) saturate(8)}
+.flash{background:#ffd42a!important;background-image:none!important}
+.msp.flash{background:none!important;filter:drop-shadow(0 2px 3px rgba(0,0,0,.55)) grayscale(1) brightness(2.5) sepia(1) saturate(8)}
+.suin{position:absolute;box-sizing:border-box;border:0;border-radius:8px;background:#fff;color:#1b2340;text-align:center;font-family:Fredoka,system-ui,sans-serif;font-weight:600;padding:0 10px;margin:0;outline:none;min-height:0}
+.suin:focus-visible{box-shadow:0 0 0 3px #ffcf1f}
+.suin.bad{animation:shk .3s}
+@keyframes shk{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.suerr{position:absolute;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;font-weight:600;text-shadow:0 1px 3px rgba(0,0,0,.5);pointer-events:none}
+.suplay{position:absolute;background:transparent;border:0;border-radius:0;padding:0;margin:0;min-height:0}
+.suplay:focus-visible{outline:3px solid #fff}.subk{position:absolute;background:transparent;border:0;border-radius:0;padding:0;margin:0;min-height:0}.subk:focus-visible{outline:3px solid #fff}
+.suplay span{display:none;position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);align-items:center;justify-content:center;line-height:1;font-weight:700;color:#17330a;background:linear-gradient(#fff27a,#ffcf1f);clip-path:polygon(99.6% 88.1%,89.3% 98.8%,13.2% 94%,8.6% 77.4%,0% 9.5%,4.1% 0%,82.3% 1.2%,90.5% 20.2%);pointer-events:none}
+.suplay.fl span{display:flex}
+.topr{position:absolute;top:max(10px,env(safe-area-inset-top,0px));right:max(10px,env(safe-area-inset-right,0px));z-index:3;display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.gear{pointer-events:auto;width:44px;height:44px;border-radius:50%;padding:0;margin:0;min-height:0;display:flex;align-items:center;justify-content:center;background:var(--card);border:2px solid var(--bd);box-shadow:0 2px 6px rgba(0,0,0,.35)}
+.gear svg{width:26px;height:26px;fill:var(--fg)}
+.danger{background:#d4493f;color:#fff}
+.hud{min-width:130px;max-width:190px;background:var(--card);color:var(--fg);border:2px solid var(--bd);border-radius:12px;padding:6px 10px;font-size:14px;line-height:1.3;box-shadow:0 2px 6px rgba(0,0,0,.35);pointer-events:none}
+.hud b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hud2{width:min(220px,52vw);pointer-events:none;filter:drop-shadow(0 2px 4px rgba(0,0,0,.4))}.hud2 svg{display:block;width:100%;height:auto;overflow:visible}@keyframes hxp{50%{filter:brightness(1.3) drop-shadow(0 0 14px #62cfff)}}.hxn{animation:hxp 1.8s ease-in-out infinite}@media(prefers-reduced-motion:reduce){.hxn{animation:none}}
+.hud small{font-size:12px}.tm{touch-action:pan-y;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;cursor:grab}.tm .iv{display:none}.tm.open .iv{display:block}.tm.drag{position:relative;z-index:20;cursor:grabbing;touch-action:none;opacity:.96;filter:drop-shadow(0 8px 14px rgba(0,0,0,.4))}.hw{display:flex;flex-direction:column;gap:8px;align-items:stretch}.hrow{display:flex;align-items:flex-start;gap:0}.pdev{pointer-events:auto;flex:none;width:70.35px;height:55.76px;margin:14px 0 0 -6px;padding:0;min-height:0;background:none;border:0;border-radius:0;filter:drop-shadow(0 2px 4px rgba(0,0,0,.45))}.pdev img{width:100%;height:100%;object-fit:contain;display:block}.pdev.flash{background:none!important;filter:drop-shadow(0 2px 4px rgba(0,0,0,.45)) grayscale(1) brightness(2.5) sepia(1) saturate(8)}
+.evbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;display:flex;align-items:flex-start;justify-content:space-between;gap:6px;background:var(--bg);padding:6px 0 4px;margin:-6px 0 4px}.evbar>div{display:flex;flex:none}.evbar button{padding:8px 10px;font-size:14px}.evbar .evc{margin:4px 0 0 auto;text-align:right;line-height:1.15;padding:4px 10px;font-size:13px}
+.mvb{display:block;width:100%;text-align:left;margin:6px 0 0}
+.mvx{background:var(--mc);color:#fff;border:3px solid var(--mc);-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.mc-dmg{--mc:#c2540a}.mc-buff{--mc:#2563eb}.mc-debuff{--mc:#8b3fd9}.mc-cus{--mc:#f2c230}.mvx.mc-cus,#mdet.mc-cus{color:#1b2340}
+.sq{width:100%;box-sizing:border-box;font:inherit;padding:11px 14px;margin:6px 0 4px;min-height:44px;border-radius:12px;border:2px solid var(--bd);background:var(--card);color:var(--fg)}
+.mleg i{display:inline-block;width:11px;height:11px;border-radius:3px;background:var(--mc);margin:0 3px 0 8px;vertical-align:-1px}.mleg i:first-child{margin-left:0}
+#mdet{position:fixed;left:50%;top:10%;transform:translateX(-50%);width:min(92vw,420px);z-index:50;pointer-events:none;background:var(--mc);color:#fff;border:3px solid var(--mc);border-radius:14px;padding:10px 14px;box-shadow:0 6px 20px rgba(0,0,0,.45);line-height:1.4;font-size:15px}
+#mdet b{font-size:17px}
+button.mbf,select.mbs{font:inherit;font-size:14px;font-weight:600;padding:4px 12px;margin:3px 4px 3px 0;min-height:0;border:2px solid #000;border-radius:16px;background:var(--card);color:var(--fg)}
+button.mbf.on{background:linear-gradient(#fff27a,#ffcf1f)}
+.mbt{display:flex;gap:8px}.mbt button{flex:1}.mbt button.s.on{background:linear-gradient(#fff27a,#ffcf1f);text-shadow:1px 2px 0 rgba(120,80,0,.45)}
+.mvx small{color:inherit;opacity:.85}.mbd{padding-top:6px}.mbd>small{display:block;color:var(--mut);margin:2px 0}.mbl{display:flex;align-items:center;gap:8px;font-size:14px;margin:6px 0}.mbl input{flex:1}
+.mvx.mvo{opacity:.4}.alr .mdx{margin:4px 0 0;line-height:1.4;font-size:15px}.alr .mdx b{font-size:17px}
+.ti{height:1.2em;width:auto;vertical-align:-.25em;margin:0 1px}.bi{width:14px;height:14px;vertical-align:-2px;margin:0 1px}.msp{position:absolute;transform:translate(-50%,-50%);width:min(5.525%,47.6px);padding:0;margin:0;min-height:0;background:none;border:0;border-radius:0;line-height:1;filter:drop-shadow(0 2px 3px rgba(0,0,0,.55))}.msp img{width:100%;height:auto;display:block}.msp .big{font-size:34.0px}
+.mk .rick{width:65%;max-width:none;margin-left:17.5%}#dk{position:fixed;inset:0;z-index:10;background:#000;overflow:hidden;font-family:Fredoka,system-ui,sans-serif}
+#dk *{box-sizing:border-box}
+#dkin{position:absolute;left:0;top:0;width:2378px;height:1080px;transform-origin:0 0;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}
+#dkbg{position:absolute;left:0;top:0;width:2378px;height:1080px;background:#0f3a8f url("grafiki/deck_background.webp") center/cover no-repeat}
+#dklist{position:absolute;left:380px;top:40px;width:1590px;height:920px;overflow-y:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;padding:12px 0 190px}
+#dkcol{position:absolute;left:582px;top:300px;width:1360px;height:660px;overflow-y:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;padding:8px 0 190px}
+#dklist::-webkit-scrollbar,#dkcol::-webkit-scrollbar{display:none}
+#dkgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+#dkerow{position:absolute;left:380px;top:52px;width:1590px;height:232px}
+#dk .dr{position:relative;height:232px;margin:0 0 16px}
+#dkerow .dr{margin:0}
+#dk .dtab{position:absolute;left:70px;top:0;width:120px;height:232px;border:7px solid #000;border-radius:30px;background:linear-gradient(#5ff3ff,#33b4f5);box-shadow:inset 0 0 0 3px #fff;text-align:center;color:#000;font-weight:600}
+#dk .dtab small{display:block;font-size:30px;line-height:1;margin-top:12px;color:#000}
+#dk .dtab b{display:block;font-size:150px;line-height:150px;margin-top:4px;font-weight:600}
+#dk .dcard{position:absolute;left:202px;top:0;width:1360px;height:232px;border:8px solid #000;border-radius:38px;background:linear-gradient(#08c6ff,#b7fdff);box-shadow:inset 0 0 0 4px #fff;display:flex;padding:16px 18px;cursor:pointer}
+#dk .dr.sel .dcard{background:linear-gradient(#fff700,#ffe14d)}
+#dk .dsl{position:relative;flex:1;height:190px;margin-right:14px;border-radius:26px;background:#14a8ff;box-shadow:inset 0 0 0 4px #7fe3ff}
+#dk .dsl:last-child{margin-right:0}
+#dk .dr.sel .dsl.e{background:#7cc78f;box-shadow:inset 0 0 0 4px #a9e2b4}
+#dk .dsl.f{background:none;box-shadow:none;border-radius:0}
+#dk .dcard .dsl.f+.dsl.f:before{content:"";position:absolute;left:-8px;top:8px;bottom:8px;width:3px;background:#06395f;opacity:.75}
+#dk .dsl.dp{background:rgba(255,45,111,.28);box-shadow:inset 0 0 0 5px #ff2d6f;border-radius:26px}
+#dk .dsl.t{margin:0;flex:none;height:190px;border:6px solid #000;border-radius:26px;background:#14a8ff;box-shadow:inset 0 0 0 4px #7fe3ff;cursor:pointer}
+#dk .dsl.t.in{background:#7cc78f;box-shadow:inset 0 0 0 4px #a9e2b4}
+#dk .dsl .dh{position:absolute;left:14px;top:2px;width:150px;height:124px;max-width:none;object-fit:contain;object-position:center bottom;display:block}
+#dk .dsl .dem{position:absolute;left:14px;top:10px;width:150px;height:110px;font-size:90px;line-height:110px;text-align:center}
+#dk .dsl .dty{position:absolute;left:166px;top:69px;transform:translateY(-50%);height:auto;max-width:none;display:block}
+#dk .dlv{position:absolute;left:22px;bottom:4px;height:44px;display:flex;border:3px solid #000;border-radius:12px;overflow:hidden;font-weight:600;font-size:30px;line-height:38px;color:#fff}
+#dk .dlv i{font-style:normal;padding:0 8px;background:linear-gradient(#ff9a1f,#e8650a);font-size:25px}
+#dk .dlv u{text-decoration:none;padding:0 10px;background:#000;min-width:48px;text-align:right}
+#dk .dout{position:absolute;right:6px;bottom:8px;font-weight:700;font-size:30px;color:#fff;-webkit-text-stroke:6px #000;paint-order:stroke fill}
+#dk .dnum{position:absolute;right:8px;top:6px;width:44px;height:44px;border-radius:50%;background:#000;color:#fff;font-weight:600;font-size:30px;line-height:44px;text-align:center}
+#dk .dact{position:absolute;left:14px;top:34px;width:42px;height:164px;border:5px solid #000;border-radius:16px;background:#ffe51a;display:flex;align-items:center;justify-content:center}
+#dk .dact span{transform:rotate(-90deg);white-space:nowrap;font-weight:600;font-size:30px;color:#000}
+#dksb{position:absolute;left:1992px;top:50px;width:16px;height:820px;border-radius:8px;background:rgba(0,0,10,.55);border:3px solid #021a4a}
+#dkth{position:absolute;left:-3px;top:0;width:16px;border-radius:8px;background:#fff;border:3px solid #021a4a;box-sizing:content-box}
+#dk .dhb{all:unset;box-sizing:border-box;position:absolute;display:flex;align-items:center;justify-content:center;cursor:pointer;border:8.3px solid #000;border-radius:40px;transform:skewX(23.4deg);box-shadow:inset 0 0 0 3px #fff;touch-action:manipulation}
+#dk .dhb span{display:block;transform:skewX(-23.4deg);font:600 55px/1 Fredoka,system-ui,sans-serif;color:#050505}
+#dk .dg{background:linear-gradient(#30fb34,#19f615)}#dk .dg span{text-shadow:3px 4px 0 rgba(0,120,0,.55)}
+#dk .dy{background:linear-gradient(#fffa7a,#fecc09)}#dk .dy span{text-shadow:3px 4px 0 rgba(120,90,0,.55)}
+#dk .dhb[data-off]{background:linear-gradient(#ececec,#9c9c9c);cursor:default}#dk .dhb[data-off] span{color:#3a3a3a;text-shadow:none}
+#dk .dhb.fl{filter:brightness(1.3)}
+#dk .drb{all:unset;position:absolute;display:block;cursor:pointer}#dk .drb svg{display:block;width:100%;height:100%}#dk .drb:active #dkrg stop:first-child,#dk .drb.fl #dkrg stop:first-child{stop-color:#fff27a}#dk .drb:active #dkrg stop:last-child,#dk .drb.fl #dkrg stop:last-child{stop-color:#ffcf1f}
+#dkmsg{position:absolute;left:0;top:960px;width:2378px;height:120px;border-radius:28px 28px 0 0;background:#ffdcdc;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 40px;font-weight:600;font-size:54px;color:#111}
+
+/* ===== GAME LOOK: restyle of the plain screens (menu, team, items, battle, settings, Mortys & Attacks) to match the title, shop, lab and deck screens ===== */
+:root,:root[data-theme="dark"]{--bg:#1e5bc6;--fg:#1b2340;--card:#ffe6e6;--mut:#5d6788;--bd:#b9c9de}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1e5bc6;--fg:#1b2340;--card:#ffe6e6;--mut:#5d6788;--bd:#b9c9de}}
+html{background:#1e5bc6}
+body{background:#1e5bc6}
+h1{font-family:Georgia,"Times New Roman",serif;font-weight:700;font-size:28px;color:#fff;-webkit-text-stroke:6px #000;paint-order:stroke fill;text-shadow:0 3px 0 rgba(0,0,0,.35);letter-spacing:.5px;margin:6px 0 12px}
+.c{border:3px solid #000;border-left-width:7px;box-shadow:inset 0 0 0 2px #fff,0 3px 0 rgba(0,0,0,.3);border-radius:16px}
+.c.msg,.msg{border:3px solid #000}
+#a>small,.mleg{color:#fff;text-shadow:0 1px 2px #000,0 0 3px #000}
+button:not([class]),button.s,button.danger{border:3px solid #000;border-radius:24px;box-shadow:inset 0 0 0 2px #fff,0 3px 0 rgba(0,0,0,.35);color:#050505;font-weight:600;transition:transform .06s}
+button:not([class]){background:linear-gradient(#30fb34,#19f615);text-shadow:1px 2px 0 rgba(0,120,0,.55)}
+button.s{background:linear-gradient(#08fafe,#40a5fd);text-shadow:1px 2px 0 rgba(10,70,110,.6)}
+button.danger{background:linear-gradient(#fe0679,#fc0204);text-shadow:1px 2px 0 rgba(120,0,40,.5)}
+button:not([class]):active,button.s:active,button.danger:active{transform:translateY(2px);background:linear-gradient(#fff27a,#ffcf1f)}
+button:disabled{filter:grayscale(1);opacity:.6}
+.mvx{border-color:#000;border-radius:20px;box-shadow:inset 0 0 0 2px rgba(255,255,255,.85),0 3px 0 rgba(0,0,0,.35)}
+</style></head><body><div id="a"></div><script>
+/* ===== GAME DATA: edit this block ===== */
+const RAR=["common","rare","epic","exotic"];
+const ROAM=[{id:4,base:1,home:{0:3}}]; // Mortys that can spawn in EVERY dimension: id (number in SP), base = chance in percent per spawn everywhere, home = higher chance in chosen dimensions {dimension number: percent}. Placeholder values. id = index in SP (4 = Dragon Rider) Morty.
+const CHANCE={common:70,rare:20,epic:8,exotic:2}; // spawn chances in percent
+// Buffs and debuffs work in STACKS (per stat, max 6 up or down, permanent until the battle ends): weak = 1 stack, medium = 2, strong = 3.
+// Stacks of the same stat add up (a +3 and then a -3 cancel out). Multipliers: Atk, Def, Spd: buff 1+n/4 (x1.25 ... x2.5), debuff 1/(1+n/4) (x0.8 ... x0.4).
+// Accuracy and Evade: buff 1+n/15 (x1.0666 ... x1.4), debuff 1/(1+n/15) (x0.9375 ... x0.7143). Crit stat: every stack = +10 percentage points of crit chance.
+const STK={weak:1,medium:2,strong:3},SMAX=6;
+const STRV=k=>STK[k]||0;
+const mul=(i,n)=>{n=n|0;let u=i>=4?15:4;return n>=0?1+n/u:1/(1+(-n)/u)};
+// Critical hits: every damaging hit rolls a small chance (CRB percent + Crit stat). A crit deals CRM times the normal damage.
+const CRB=5,CRM=1.5,crc=a=>Math.max(0,Math.min(100,CRB+10*((a.sx&&a.sx[6])||0)));
+// Moves: t = type (normal, rock, paper, scissors), p = base damage, ap = uses per fight, acc = chance in percent that the move (or that part of a multi-part move) works, so 95 means a 5% miss chance (leave out = never misses).
+// Every part rolls its own acc. Parts that hit the enemy (damage, enemy debuffs, status) are also changed by the Accuracy and Evade stats; parts that only buff the Morty itself use acc exactly as written.
+// ps = status effect ("poison" or "paralyze"), pc = chance in percent that the status is applied (leave out = always). A paralyzed Morty cannot move with a 15% chance each turn (PZC), a poisoned one loses 5% max HP each turn.
+// fx = [[who ("self" = buff own stat, "selfdown" = lower own stat, "enemy" = lower enemy stat), stat numbers (1 Atk, 2 Def, 3 Spd, 4 Accuracy, 5 Evade, 6 Crit), strength (weak / medium / strong), optional chance in percent]]
+const MV={
+"Headbutt":{t:"normal",p:100,ap:5,acc:95},
+// Morty moves (all 95% accuracy)
+"Outburst":{t:"normal",p:50,ap:12,acc:95},
+"Cry":{t:"normal",ap:18,acc:95,fx:[["enemy",[2],"weak"]]},
+"Flail":{t:"normal",p:65,ap:10,acc:95},
+"Belch":{t:"normal",ap:18,acc:95,fx:[["self",[4],"weak"]]},
+"Swing":{t:"normal",p:90,ap:8,acc:95},
+"Rush":{t:"normal",p:100,ap:8,acc:95},
+"Mortify":{t:"normal",ap:12,acc:95,fx:[["self",[1],"medium"]]},
+"Fierce Lunge":{t:"normal",p:120,ap:8,acc:95},
+"Stare Down":{t:"normal",ap:10,acc:95,fx:[["enemy",[4],"medium"]]},
+"Unleash":{t:"normal",p:140,ap:5,acc:95},
+"Party":{t:"rock",p:70,ap:8,acc:95},
+"Metal Horns":{t:"normal",ap:5,stg:[{acc:100,fx:[["self",[1,2],"medium"]]},{acc:66,fx:[["enemy",[2],"medium"]]}]},
+"Straight Edge":{t:"rock",p:115,ap:5,acc:95},
+// Dethklok Fan Morty moves (strength: weak = 1 stack, medium = 2, strong = 3; the "-3" debuffs are strong, "2" is medium)
+"Blind Swing":{t:"normal",p:75,ap:8,acc:90},
+"Head Bang":{t:"rock",p:65,ap:10,acc:95},
+"Headache":{t:"normal",ap:5,acc:95,fx:[["enemy",[2],"strong"]]},
+"Traumatize":{t:"normal",ap:5,acc:95,fx:[["enemy",[4],"strong"]]},
+// Dragon Rider Morty moves (strength: weak = 1 stack, medium = 2, strong = 3)
+"Relax":{t:"normal",ap:18,acc:95,fx:[["self",[3],"weak"]]},
+"Poke":{t:"rock",p:45,ap:12,acc:95},
+"Sneer":{t:"normal",ap:18,acc:95,fx:[["enemy",[1],"weak"]]},
+"Crush":{t:"rock",p:90,ap:8,acc:95},
+"Dragon Call":{t:"normal",ap:5,acc:100,fx:[["self",[1],"medium"],["enemy",[2],"medium"]]},
+"Heave Down":{t:"normal",ap:10,acc:95,fx:[["enemy",[2],"strong"]]},
+"Flutter":{t:"normal",p:100,ap:8,acc:95},
+"Diving Shot":{t:"rock",ap:5,stg:[{acc:90,p:80},{acc:90,fx:[["enemy",[4,3],"weak"]]}]},
+"Claw":{t:"rock",p:106,ap:8,acc:90},
+// Box Morty moves (strength: weak = 1 stack, medium = 2, strong = 3). Break In already exists above.
+"Lift":{t:"normal",p:55,ap:10,acc:95},
+"Crease":{t:"paper",p:65,ap:10,acc:90},
+"Protect":{t:"normal",ap:12,acc:95,fx:[["self",[2],"medium"]]},
+"Nod Off":{t:"normal",p:95,ap:8,acc:95},
+"Wear Down":{t:"normal",ap:15,acc:95,fx:[["enemy",[2],"medium"]]},
+"Iron Out":{t:"paper",p:120,ap:5,acc:95},
+"Humiliate":{t:"normal",ap:10,acc:95,fx:[["enemy",[1],"strong"]]},
+"Fortify":{t:"normal",ap:5,acc:100,fx:[["self",[2,4],"medium"]]},
+"Fan Art":{t:"paper",ap:5,stg:[{acc:95,p:75},{acc:100,ps:"poison",pc:70}]},
+// Flannel Morty moves (strength: weak = 1 stack, medium = 2, strong = 3). Jab already exists above.
+"Kick":{t:"rock",p:60,ap:10,acc:95},
+"Repress":{t:"normal",ap:12,acc:95,fx:[["self",[1],"weak"]]},
+"Sorry!":{t:"normal",ap:8,acc:100,fx:[["enemy",[1,2,3,4],"weak"]]},
+"Medicate":{t:"normal",ap:15,acc:95,fx:[["enemy",[2],"medium"]]},
+"Thaw":{t:"normal",p:95,ap:8,acc:95},
+"Strengthen":{t:"normal",ap:5,acc:100,fx:[["self",[1,5],"weak"]]},
+"A Boot":{t:"normal",ap:5,stg:[{acc:100,p:90},{acc:100,ps:"poison",pc:50},{acc:100,ps:"paralyze",pc:50}]},
+"Mock":{t:"normal",ap:5,acc:100,fx:[["enemy",[1,2,3],"medium",80]]},
+"Universal Healthcare":{t:"normal",ap:5,stg:[{acc:95,p:60,rg:50},{acc:100,fx:[["self",[2],"weak"]]}]},
+// Archmage Morty moves (strength: weak = 1 stack, medium = 2, strong = 3). Flail already exists above.
+"Haunt":{t:"normal",ap:10,acc:95,fx:[["enemy",[4],"weak"]]},
+"Icy Touch":{t:"paper",p:65,ap:10,acc:95},
+"Ouija":{t:"normal",p:80,ap:8,acc:95},
+"Hypnotize":{t:"normal",ap:10,acc:95,fx:[["enemy",[4],"strong"]]},
+// Snake Morty and Season Four Morty moves (strength: weak = 1 stack, medium = 2, strong = 3; stats: 1 Atk, 2 Def, 3 Spd, 4 Accuracy, 5 Evade; 4th number in an effect = chance of that single effect)
+"Absorb":{t:"normal",ap:18,acc:95,fx:[["self",[2],"weak"]]},
+"Vomit":{t:"rock",p:62,ap:12,acc:95},
+"Bunch Up":{t:"normal",ap:5,acc:100,fx:[["enemy",[1,3],"medium"],["self",[2],"medium"]]},
+"Venomous Bite":{t:"scissors",ap:5,stg:[{acc:95,p:60},{acc:100,ps:"poison"},{acc:100,fx:[["enemy",[4,2],"weak",95]]}]},
+"Blink":{t:"normal",ap:12,acc:95,fx:[["self",[4],"medium"]]},
+"Slurp":{t:"normal",p:75,ap:8,acc:95},
+"Death Crystal":{t:"normal",ap:5,acc:100,fx:[["self",[2,5],"strong",75]]},
+"See the Truth":{t:"scissors",ap:5,stg:[{acc:95,p:80},{acc:100,ps:"paralyze",pc:75},{acc:100,ps:"poison",pc:65}]},
+"Aura":{t:"normal",ap:10,acc:95,fx:[["self",[1],"strong"]]},
+"Frost Bolt":{t:"rock",ap:8,stg:[{acc:95,p:80},{acc:100,fx:[["enemy",[3,2],"medium"]]}]},
+"Lightning Bolt":{t:"scissors",ap:5,stg:[{acc:95,p:70},{acc:100,ps:"paralyze",pc:50}]},
+"Super Nova":{t:"paper",p:120,ap:5,acc:95},
+"Elder Curse":{t:"normal",ap:5,acc:100,fx:[["enemy",[1,4,5],"medium"]]},
+// Crow Morty moves (strength: weak = 1 stack, medium = 2, strong = 3). Swing already exists above.
+"Machine Wash":{t:"normal",p:65,ap:10,acc:95},
+"Provoke":{t:"normal",ap:15,acc:95,fx:[["enemy",[4],"weak"]]},
+"Mind Read":{t:"normal",ap:12,acc:95,fx:[["self",[3],"medium"]]},
+"Perch & Poop":{t:"normal",ap:10,stg:[{acc:90,p:50},{acc:90,p:50},{acc:95,fx:[["enemy",[2],"weak"]]}]},
+"Noxious Fumes":{t:"normal",ap:10,acc:95,ps:"poison"},
+"Scrunch":{t:"paper",p:65,ap:10,acc:90},
+"Gross Out":{t:"normal",ap:10,acc:95,fx:[["enemy",[3],"strong"]]},
+"Apex Genius":{t:"paper",ap:8,stg:[{acc:90,p:95},{acc:90,fx:[["self",[5],"medium"]]}]},
+"Training Complete":{t:"normal",ap:5,stg:[{acc:80,fx:[["self",[1],"medium"]]},{acc:80,fx:[["self",[2],"medium"]]},{acc:80,fx:[["self",[5],"medium"]]}]},
+// Goomby Morty moves (strength: weak = 1 stack, medium = 2, strong = 3)
+"Encrust":{t:"normal",p:60,ap:10,acc:95},
+"Caress":{t:"normal",p:80,ap:8,acc:95},
+"Glitter Blast":{t:"normal",ap:5,acc:95,fx:[["enemy",[4,5],"weak"]]},
+"Clingy":{t:"normal",ap:8,acc:95,fx:[["enemy",[5],"strong"]]},
+"Hug":{t:"paper",p:55,ap:12,acc:95},
+"Dinner Time":{t:"normal",p:120,ap:5,acc:95},
+"Present Portal":{t:"normal",ap:5,stg:[{acc:50,fx:[["self",[1],"weak"]]},{acc:50,fx:[["self",[2],"weak"]]},{acc:50,fx:[["self",[5],"weak"]]},{acc:50,fx:[["self",[4],"weak"]]},{acc:50,fx:[["self",[3],"weak"]]}]},
+"Holiday Spirit":{t:"normal",ap:5,stg:[{acc:50,fx:[["self",[1],"strong"]]},{acc:50,fx:[["self",[2],"strong"]]},{acc:50,fx:[["self",[3],"strong"]]}]},
+// Robot Chicken Morty moves (strength: weak = 1 stack, medium = 2, strong = 3). Flutter already exists above.
+"Dead Stare":{t:"normal",p:60,ap:10,acc:95},
+"Beam":{t:"normal",p:100,ap:8,acc:95},
+"Wing Blast":{t:"scissors",p:107,ap:8,acc:95},
+"Compute":{t:"normal",ap:10,acc:95,fx:[["self",[3],"strong"]]},
+"Laser Stare":{t:"normal",ap:8,stg:[{acc:95,fx:[["self",[1],"medium"]]},{acc:95,fx:[["self",[4],"medium"]]},{acc:95,fx:[["self",[5],"medium"]]}]},
+"Constrict":{t:"scissors",ap:5,stg:[{acc:95,p:80},{acc:100,fx:[["enemy",[3],"medium"]]},{acc:100,ps:"paralyze",pc:50}]},
+"Bone Breaker":{t:"scissors",p:120,ap:8,acc:95},
+"Hen Peck":{t:"scissors",ap:5,stg:[{acc:100,p:10},{acc:100,p:20},{acc:100,p:20},{acc:80,p:30},{acc:60,p:30},{acc:40,p:40},{acc:20,p:50}]},
+// Gotron Morty moves (strength: weak = 1 stack, medium = 2, strong = 3). Outburst, Sneer, Strengthen, Kick, Protect and Stare Down already exist above.
+"Combustion":{t:"normal",ap:10,stg:[{acc:95,p:50},{acc:100,fx:[["self",[1,3],"weak"]]}]},
+"Regenerate":{t:"normal",p:90,ap:5,acc:95,rg:50},
+"Go Team Gotron":{t:"rock",ap:5,stg:[{acc:100,p:60},{acc:90,p:50},{acc:75,p:30},{acc:60,p:25},{acc:30,p:15}]},
+"Gotron Regroup":{t:"normal",ap:5,stg:[{acc:95,fx:[["self",[1],"strong"]]},{acc:95,fx:[["enemy",[2],"medium"]]}]},
+// Squirm: every Morty gets it automatically once all its other moves are out of AP. Never runs out. rec = base power of the damage it deals to itself.
+"Squirm":{t:"normal",p:50,ap:Infinity,rec:25},
+"Squirm Recoil":{t:"normal",p:25,ap:Infinity},
+// Jetpack Morty moves. stg = multi-part move: every part rolls its own accuracy, so any of the parts may fail.
+"Break In":{t:"normal",ap:18,acc:95,fx:[["enemy",[2],"weak"]]},
+"Mope":{t:"normal",p:75,ap:8,acc:95},
+"Enrage":{t:"normal",ap:5,acc:100,fx:[["self",[1,3,4],"weak"]]},
+"Jab":{t:"normal",p:80,ap:8,acc:95},
+"Charging":{t:"rock",ap:5,stg:[{acc:90,fx:[["self",[3],"weak"]]},{acc:90,fx:[["self",[1],"weak"]]},{acc:90,p:100}]},
+"Mouth Off":{t:"normal",ap:10,acc:95,fx:[["enemy",[4],"strong"]]},
+"Portal Spillage":{t:"rock",p:125,ap:8,acc:80},
+"Lick This":{t:"normal",ap:5,stg:[{acc:85,fx:[["enemy",[1],"medium"]]},{acc:85,fx:[["enemy",[2],"medium"]]},{acc:85,fx:[["enemy",[4],"medium"]]}]},
+// Soldier Morty, Chimney Sweep Morty and S.O.S Morty moves
+"Condition":{t:"normal",p:50,ap:12,acc:95},
+"Attention":{t:"normal",ap:5,stg:[{acc:33,fx:[["self",[1],"weak"]]},{acc:33,fx:[["self",[2],"weak"]]},{acc:33,fx:[["self",[3],"weak"]]},{acc:33,fx:[["self",[5],"weak"]]},{acc:33,fx:[["self",[4],"weak"]]}]},
+"Reminisce":{t:"paper",p:65,ap:10,acc:95},
+"Crew Cut":{t:"rock",p:80,ap:8,acc:95},
+"Righteous Retribution":{t:"normal",ap:10,stg:[{acc:95,fx:[["enemy",[1],"medium"]]},{acc:100,ps:"paralyze",pc:50}]},
+"Hold My Baby":{t:"normal",ap:8,stg:[{acc:100,p:40},{acc:90,p:50},{acc:80,p:60}]},
+"Lock and Load":{t:"paper",p:100,ap:8,acc:85},
+"Defend":{t:"normal",ap:10,acc:95,fx:[["self",[2],"strong"]]},
+"Fixer-Upper":{t:"normal",ap:12,acc:95,fx:[["self",[1],"weak"]]},
+"Fire Play":{t:"normal",ap:5,stg:[{acc:95,p:90},{acc:100,p:50}]},
+"Altitude Sickness":{t:"normal",ap:5,stg:[{acc:100,ps:"poison",pc:85},{acc:100,fx:[["enemy",[2,3],"weak"]]}]},
+"Sneeze":{t:"rock",p:45,ap:12,acc:95},
+"Frostbite":{t:"rock",ap:10,stg:[{acc:95,p:75},{acc:95,fx:[["enemy",[3],"medium"]]}]},
+"Harden":{t:"normal",ap:15,acc:95,fx:[["self",[2],"medium"]]},
+"Brain Freeze":{t:"normal",p:120,ap:5,acc:95},
+// Pizza Delivery Morty moves
+"Drool":{t:"normal",ap:18,acc:95,fx:[["self",[2],"weak"]]},
+"Nibble":{t:"scissors",p:45,ap:10,acc:95},
+"Lick":{t:"normal",ap:18,acc:95,fx:[["enemy",[3],"weak"]]},
+"Negative Energy":{t:"normal",ap:15,acc:95,fx:[["enemy",[1],"medium"]]},
+"Elemental Strike":{t:"normal",ap:10,stg:[{acc:100,p:30},{acc:100,p:25},{acc:80,p:25},{acc:75,p:25},{acc:100,fx:[["self",[2],"medium"]]}]},
+"Focus":{t:"normal",ap:10,stg:[{acc:95,fx:[["self",[4],"medium"]]},{acc:95,fx:[["self",[1],"medium"]]}]},
+"Gooey Cheese":{t:"scissors",ap:5,stg:[{acc:90,p:80},{acc:100,ps:"paralyze",pc:50}]},
+"Airs":{t:"scissors",ap:5,stg:[{acc:75,p:120},{acc:90,fx:[["enemy",[2],"medium"]]}]},
+// Birding Man Morty moves
+"Flower Child":{t:"normal",ap:12,acc:95,fx:[["self",[1],"medium"]]},
+"Upbeat":{t:"rock",ap:10,stg:[{acc:75,p:90},{acc:75,fx:[["self",[3],"weak"]]},{acc:75,fx:[["self",[1],"weak"]]}]},
+"Star Gaze":{t:"normal",ap:15,acc:95,fx:[["enemy",[3],"medium"]]},
+"Artsy Fartsy":{t:"rock",ap:5,stg:[{acc:95,p:75},{acc:100,ps:"poison",pc:80}]},
+"Sparkle":{t:"normal",ap:10,acc:95,fx:[["self",[4],"strong"]]},
+"Psychedelic Smash":{t:"rock",p:100,ap:8,acc:90},
+"Shield Wall":{t:"normal",ap:8,acc:100,fx:[["self",[2],"strong"]]},
+// Evil Morty moves
+"Erase":{t:"paper",p:70,ap:8,acc:95},
+"Distract":{t:"normal",ap:10,acc:95,fx:[["self",[4],"weak"]]},
+"Espionage":{t:"normal",ap:8,acc:100,fx:[["self",[3,5],"weak"]]},
+"Ascend":{t:"normal",p:120,ap:8,acc:95},
+"Hunt Down":{t:"paper",ap:8,stg:[{acc:90,p:80},{acc:95,fx:[["enemy",[2],"medium"]]},{acc:95,fx:[["enemy",[5],"medium"]]}]},
+"Finite Curve":{t:"paper",ap:5,stg:[{acc:95,p:120},{acc:95,fx:[["enemy",[3],"medium"]]},{acc:100,ps:"paralyze",pc:85}]},
+"Golden Portal":{t:"normal",ap:5,acc:100,fx:[["self",[1,2,3],"weak"],["self",[4],"weak",50],["self",[5],"weak",50],["self",[6],"weak",50]]},
+// Hell Demon Morty moves
+"Stalk":{t:"normal",ap:5,acc:95,fx:[["enemy",[2],"weak"]]},
+"Probe":{t:"scissors",p:60,ap:10,acc:95},
+"Energy Drain":{t:"scissors",p:60,ap:8,acc:95,rg:50},
+"Essence of Hell":{t:"normal",ap:5,stg:[{acc:80,fx:[["self",[1,2],"strong"]]}]},
+"Great Day for Suffering":{t:"scissors",ap:5,stg:[{acc:95,p:50},{acc:95,p:40},{acc:80,p:30},{acc:75,p:30},{acc:75,p:30}]},
+// Forbidden Morty moves (Erase, Negative Energy and Elder Curse already exist above)
+"Brand":{t:"paper",p:55,ap:12,acc:95},
+"Necrosis":{t:"normal",ap:5,stg:[{acc:95,p:30},{acc:95,p:30},{acc:100,ps:"poison",pc:33},{acc:95,p:30}]},
+"Piercing Stare":{t:"paper",p:108,ap:10,acc:95},
+"Denial":{t:"normal",ap:10,acc:95,fx:[["self",[2],"strong"]]},
+"Arkham Trap":{t:"normal",ap:5,acc:95,fx:[["enemy",[4],"strong"]]},
+"Arcane Cast":{t:"normal",ap:5,stg:[{acc:90,p:120},{acc:70,ps:"paralyze"}]},
+// Wine Boy Morty moves (Lift, Break In, Mope, Regenerate and Headache already exist above)
+"Salivate":{t:"normal",ap:15,acc:95,fx:[["self",[1],"medium"]]},
+"Waft":{t:"paper",ap:8,stg:[{acc:95,p:80},{acc:100,fx:[["enemy",[3,2],"weak"]]}]},
+"Magic Door":{t:"normal",ap:5,stg:[{acc:100,fx:[["self",[1,3,5],"medium"]]}]},
+"Stay Alive":{t:"paper",ap:5,stg:[{acc:100,p:20},{acc:100,p:20},{acc:80,p:20},{acc:80,p:30},{acc:80,p:30},{acc:33,p:40}]},
+// Ventriloquiver Morty moves (Sneer, Flail and Mock already exist above)
+"Cut":{t:"scissors",p:50,ap:10,acc:95},
+"Snub":{t:"normal",ap:12,acc:95,fx:[["enemy",[3],"medium"]]},
+"Cutting Gaze":{t:"scissors",p:80,ap:8,acc:95},
+"Punked":{t:"normal",p:95,ap:8,acc:95},
+"Grab":{t:"normal",ap:5,stg:[{acc:60,ps:"paralyze"},{acc:100,fx:[["enemy",[1,2],"weak"]]}]},
+"Volley":{t:"scissors",ap:5,stg:[{acc:100,p:15},{acc:95,p:25},{acc:80,p:45},{acc:60,p:55},{acc:33,p:60}]},
+// Wasp Morty moves (Nibble, Lick, Salivate, Provoke, Enrage and Wing Blast already exist above)
+"Sting":{t:"normal",ap:10,stg:[{acc:95,p:50},{acc:90,ps:"poison"}]},
+"Extreme Reaction":{t:"normal",ap:3,stg:[{acc:95,p:50},{acc:90,ps:"poison"},{acc:50,ps:"paralyze"}]},
+// Squid Morty moves (Cry, Flail, Mortify and Swing already exist above)
+"Spar":{t:"rock",p:55,ap:10,acc:95},
+"Splash":{t:"normal",ap:10,acc:95,fx:[["enemy",[2],"strong"]]},
+"Hydro Blast":{t:"rock",p:115,ap:5,acc:95},
+"Squid Costume":{t:"normal",ap:5,stg:[{acc:100,fx:[["self",[1],"weak"]]},{acc:75,fx:[["self",[5,3],"strong"]]}]},
+"Decoy Line":{t:"rock",ap:5,stg:[{acc:100,p:20},{acc:100,p:20},{acc:100,p:20},{acc:100,p:20},{acc:80,p:25},{acc:80,p:25},{acc:60,p:30},{acc:60,p:30},{acc:40,p:30}]},
+// Hockey Stick Morteh moves (Condition, Swing, Protect and Strengthen already exist above)
+"Bunt":{t:"normal",p:95,ap:8,acc:95},
+"Trip":{t:"normal",ap:5,stg:[{acc:90,p:30},{acc:90,ps:"paralyze"}]},
+"Leg Sweep":{t:"normal",p:108,ap:8,acc:95},
+"Slash":{t:"scissors",ap:8,stg:[{acc:95,p:95},{acc:90,fx:[["enemy",[2,5],"weak"]]}]},
+// Rabbit Morty moves (Nibble, Sneer, Provoke, Rush and Snub already exist above)
+"Dig":{t:"normal",p:65,ap:10,acc:95},
+"Puffy Tail":{t:"normal",ap:15,acc:95,fx:[["self",[1],"medium"]]},
+"Scratching Post":{t:"scissors",p:90,ap:8,acc:95},
+// Evil Rabbit Morty moves (Nibble, Sneer, Provoke, Dig, Puffy Tail, Rush, Snub, Scratching Post and Hypnotize already exist above)
+"Mind Meld":{t:"scissors",p:115,ap:5,acc:95},
+// Gardener Morty moves (Sneer, Condition, Relax, Focus and Heave Down already exist above; strength: medium = 2 stacks, strong = 3 stacks; stats: 2 Def, 3 Spd, 5 Evade)
+"Clarity":{t:"scissors",p:70,ap:8,acc:95},
+"Drowse":{t:"normal",p:80,ap:8,acc:95},
+"Soul Search":{t:"normal",ap:5,stg:[{acc:95,p:100},{acc:100,ps:"paralyze",pc:50}]},
+"Strip Dance":{t:"normal",ap:5,stg:[{acc:80,fx:[["self",[2,5],"medium"]]},{acc:80,fx:[["self",[3],"strong"]]}]},
+"The End":{t:"scissors",p:125,ap:6,acc:90},
+// New batch (Hockey Morteh, Slick, Scaly, Specs, Left Handed, Cop, Nargles, Boob World). Strength: weak = 1 stack, medium = 2, strong = 3; stats: 1 Atk, 2 Def, 3 Spd, 4 Accuracy, 5 Evade.
+"Body-Check":{t:"rock",ap:5,stg:[{acc:80,p:100},{acc:100,fx:[["enemy",[3],"weak"],["self",[2],"weak"]]}]},
+"Face-fisted":{t:"rock",ap:5,stg:[{acc:95,p:120},{acc:80,fx:[["enemy",[2],"medium"]]}]},
+"Suit & Boot":{t:"normal",p:65,ap:10,acc:95},
+"Blood Pressure":{t:"normal",ap:10,acc:95,fx:[["self",[1],"strong"]]},
+"Invasion":{t:"scissors",p:100,ap:8,acc:95},
+"Crimp":{t:"normal",p:58,ap:8,acc:95},
+"Recitation":{t:"paper",ap:5,stg:[{acc:95,p:90},{acc:100,fx:[["enemy",[1,3],"weak"]]}]},
+"Higher Education":{t:"normal",ap:5,stg:[{acc:70,fx:[["self",[1],"medium"]]},{acc:70,fx:[["self",[2],"medium"]]},{acc:70,fx:[["self",[3],"medium"]]},{acc:70,fx:[["self",[5],"medium"]]}]},
+"Hit the Books":{t:"paper",ap:5,stg:[{acc:95,p:40},{acc:80,p:50},{acc:65,p:60}]},
+"Examine":{t:"normal",ap:18,acc:95,fx:[["self",[4],"weak"]]},
+"Smooch":{t:"paper",p:80,ap:8,acc:95},
+"Neutralise":{t:"normal",p:60,ap:10,acc:95},
+"Extort":{t:"normal",ap:10,acc:95,fx:[["self",[2],"strong"]]},
+"Same Old Story":{t:"scissors",ap:5,stg:[{acc:95,p:120},{acc:100,fx:[["enemy",[1,2],"weak"]]}]},
+"Stickup":{t:"scissors",ap:8,stg:[{acc:95,p:80},{acc:100,fx:[["enemy",[1],"weak"],["self",[1],"weak"]]}]},
+"Intimidate":{t:"normal",ap:6,stg:[{acc:100,fx:[["enemy",[2],"medium"]]},{acc:70,ps:"paralyze"}]},
+"Mangle":{t:"normal",p:130,ap:5,acc:95},
+"Obsessed":{t:"normal",ap:8,stg:[{acc:90,fx:[["self",[1],"medium"]]},{acc:90,fx:[["self",[3],"medium"]]}]},
+"Voice Over":{t:"paper",ap:5,stg:[{acc:70,p:130},{acc:100,fx:[["self",[4],"weak"]]}]},
+// Shrimp Morty moves (strength: weak = 1 stack, medium = 2, strong = 3)
+"Scuttle":{t:"normal",ap:5,acc:100,fx:[["enemy",[2,5],"weak"]]},
+"Tempura":{t:"normal",ap:8,acc:100,fx:[["self",[1,3],"weak"],["selfdown",[2],"weak"]]},
+// Turkey Soldier Morty moves
+"Pray":{t:"normal",ap:10,acc:95,fx:[["self",[1],"strong"]]},
+"Gobble Tango":{t:"rock",ap:8,stg:[{acc:80,p:100},{acc:100,fx:[["enemy",[1],"weak"]]}]},
+"Truck full of turkeys":{t:"scissors",ap:5,stg:[{acc:95,p:25},{acc:90,p:25},{acc:85,p:25},{acc:80,p:25},{acc:70,ps:"paralyze"}]},
+// Forty Morty moves (Sicken is a PLACEHOLDER: effect not specified yet)
+"Comb":{t:"scissors",p:50,ap:10,acc:95},
+"Shave":{t:"scissors",p:80,ap:8,acc:95},
+"Sicken":{t:"normal",ap:10,acc:95,ps:"poison"},
+"Time Go By":{t:"normal",ap:5,fx:[["enemy",[1],"strong",75],["enemy",[2],"strong",75],["enemy",[5],"strong",75]]}};
+// Mortys: n name, e emoji or img picture, r rarity, ty type (rock, paper, scissors, none),
+// a = perfect stats at level 5, b = perfect stats at level 100 ([HP,Atk,Def,Spd]), ls = moves learned [level, move]
+const SP=[
+{n:"Morty",e:"🙂",img:"grafiki/morty/00_morty.webp",r:"common",ty:"none",b:[358,253,253,253],ls:[[1,"Outburst"],[6,"Cry"],[8,"Flail"],[10,"Belch"],[14,"Swing"],[19,"Rush"],[22,"Mortify"],[26,"Fierce Lunge"],[30,"Stare Down"],[36,"Unleash"]]},
+{n:"Dethklok Fan Morty",img:"grafiki/morty/01_dethklok_fan_morty.webp",r:"epic",ty:"rock",b:[448,383,303,343],ls:[[1,"Outburst"],[1,"Party"],[5,"Blind Swing"],[9,"Head Bang"],[15,"Headbutt"],[20,"Headache"],[26,"Straight Edge"],[31,"Traumatize"],[36,"Metal Horns"]]},
+// Real Mortys added after the tests so saved Mortys keep their ids. 
+{n:"Chimney Sweep Morty",img:"grafiki/morty/02_chimney_sweep_morty.webp",r:"rare",ty:"paper",b:[408,283,303,333],ls:[[1,"Condition"],[6,"Fixer-Upper"],[12,"Flail"],[17,"Scrunch"],[22,"Rush"],[26,"Fire Play"],[32,"Gross Out"],[36,"Humiliate"],[42,"Altitude Sickness"]]},
+{n:"Pizza Delivery Morty",img:"grafiki/morty/03_pizza_delivery_morty.webp",r:"rare",ty:"scissors",b:[428,283,333,363],ls:[[1,"Drool"],[1,"Nibble"],[5,"Lick"],[8,"Encrust"],[15,"Negative Energy"],[20,"Elemental Strike"],[24,"Focus"],[27,"Gooey Cheese"],[34,"Mouth Off"],[38,"Airs"]]},
+{n:"Dragon Rider Morty",img:"grafiki/morty/04_dragon_rider_morty.webp",r:"exotic",ty:"rock",b:[448,383,333,393],ls:[[1,"Relax"],[2,"Poke"],[6,"Blind Swing"],[12,"Sneer"],[16,"Crush"],[20,"Dragon Call"],[26,"Heave Down"],[32,"Flutter"],[36,"Diving Shot"],[42,"Claw"]]},
+// Flannel Morty: common, rock, spawns in ALL dimensions.
+{n:"Flannel Morty",img:"grafiki/morty/05_flannel_morty.webp",r:"common",ty:"rock",b:[358,283,283,333],ls:[[1,"Jab"],[1,"Kick"],[7,"Repress"],[12,"Sorry!"],[17,"Medicate"],[22,"Thaw"],[26,"Strengthen"],[32,"A Boot"],[38,"Mock"],[45,"Universal Healthcare"]]},
+// Goomby Morty: common, paper, spawns in ALL dimensions.
+{n:"Goomby Morty",img:"grafiki/morty/06_goomby_morty.webp",r:"common",ty:"paper",b:[358,253,253,283],ls:[[1,"Encrust"],[1,"Caress"],[7,"Glitter Blast"],[12,"Clingy"],[16,"Hug"],[20,"Dinner Time"],[25,"Present Portal"],[30,"Holiday Spirit"]]},
+// Crow Morty: common, paper, spawns in ALL dimensions.
+{n:"Crow Morty",img:"grafiki/morty/07_crow_morty.webp",r:"common",ty:"paper",b:[358,253,283,303],ls:[[1,"Machine Wash"],[1,"Provoke"],[4,"Swing"],[8,"Mind Read"],[13,"Perch & Poop"],[18,"Noxious Fumes"],[22,"Scrunch"],[25,"Gross Out"],[28,"Apex Genius"],[31,"Training Complete"]]},
+// Soldier Morty: common, paper, Mortyland only.
+{n:"Soldier Morty",img:"grafiki/morty/08_soldier_morty.webp",r:"common",ty:"paper",b:[388,283,313,293],ls:[[1,"Outburst"],[1,"Attention"],[5,"Reminisce"],[8,"Provoke"],[13,"Crew Cut"],[16,"Righteous Retribution"],[20,"Hold My Baby"],[22,"Wear Down"],[25,"Lock and Load"],[29,"Defend"]]},
+// Archmage Morty: epic, paper, Plumbubo Prime 51b only.
+{n:"Archmage Morty",img:"grafiki/morty/09_archmage_morty.webp",r:"epic",ty:"paper",b:[468,363,353,333],ls:[[1,"Flail"],[1,"Haunt"],[6,"Icy Touch"],[9,"Ouija"],[13,"Hypnotize"],[17,"Aura"],[21,"Frost Bolt"],[25,"Lightning Bolt"],[32,"Super Nova"],[36,"Elder Curse"]]},
+// Gotron Morty: exotic, rock, Mortopia only.
+{n:"Gotron Morty",img:"grafiki/morty/10_gotron_morty.webp",r:"exotic",ty:"rock",b:[458,343,333,423],ls:[[1,"Outburst"],[1,"Sneer"],[5,"Strengthen"],[11,"Kick"],[17,"Combustion"],[22,"Protect"],[30,"Regenerate"],[36,"Stare Down"],[41,"Go Team Gotron"],[45,"Gotron Regroup"]]},
+// Birding Man Morty: rare, rock, Mortyland only.
+{n:"Birding Man Morty",img:"grafiki/morty/11_birding_man_morty.webp",r:"rare",ty:"rock",b:[408,283,353,353],ls:[[1,"Flail"],[1,"Glitter Blast"],[5,"Party"],[10,"Flower Child"],[16,"Upbeat"],[23,"Star Gaze"],[28,"Artsy Fartsy"],[32,"Sparkle"],[36,"Psychedelic Smash"],[42,"Shield Wall"]]},
+// Box Morty: exotic, paper, GF Mortanic only.
+{n:"Box Morty",img:"grafiki/morty/12_box_morty.webp",r:"exotic",ty:"paper",b:[478,373,363,363],ls:[[1,"Lift"],[1,"Crease"],[7,"Break In"],[9,"Protect"],[13,"Nod Off"],[16,"Wear Down"],[22,"Iron Out"],[30,"Humiliate"],[33,"Fortify"],[40,"Fan Art"]]},
+// Robot Chicken Morty: exotic, scissors, Plumbubo Prime 51b only.
+{n:"Robot Chicken Morty",img:"grafiki/morty/13_robot_chicken_morty.webp",r:"exotic",ty:"scissors",b:[468,363,383,333],ls:[[1,"Dead Stare"],[2,"Beam"],[6,"Wing Blast"],[11,"Compute"],[15,"Flutter"],[20,"Laser Stare"],[26,"Constrict"],[32,"Bone Breaker"],[40,"Hen Peck"]]},
+// Jetpack Morty: epic, rock, Mortyland only.
+{n:"Jetpack Morty",img:"grafiki/morty/14_jetpack_morty.webp",r:"epic",ty:"rock",b:[448,343,333,383],ls:[[1,"Flail"],[1,"Break In"],[7,"Mope"],[13,"Enrage"],[17,"Jab"],[27,"Charging"],[32,"Mouth Off"],[35,"Portal Spillage"],[40,"Lick This"]]},
+// S.O.S Morty: rare, rock, Mortyland only.
+{n:"S.O.S Morty",img:"grafiki/morty/15_sos_morty.webp",r:"rare",ty:"rock",b:[408,303,253,333],ls:[[1,"Condition"],[6,"Dead Stare"],[12,"Sneeze"],[16,"Frostbite"],[22,"Harden"],[26,"Thaw"],[31,"Fortify"],[36,"Frost Bolt"],[42,"Brain Freeze"]]},
+// Evil Morty: exotic, paper, GF Mortanic only.
+{n:"Evil Morty",img:"grafiki/morty/16_evil_morty.webp",r:"exotic",ty:"paper",b:[468,403,423,363],ls:[[1,"Dead Stare"],[1,"Erase"],[6,"Distract"],[10,"Espionage"],[15,"Ascend"],[22,"Hunt Down"],[27,"Golden Portal"],[32,"Mock"],[37,"Humiliate"],[42,"Finite Curve"]]},
+// Hell Demon Morty: exotic, scissors, Mortopia only.
+{n:"Hell Demon Morty",img:"grafiki/morty/17_hell_demon_morty.webp",r:"exotic",ty:"scissors",b:[488,383,373,333],ls:[[1,"Stalk"],[1,"Dead Stare"],[5,"Mind Read"],[9,"Probe"],[12,"Humiliate"],[17,"Energy Drain"],[23,"Essence of Hell"],[27,"Constrict"],[32,"Hypnotize"],[37,"Great Day for Suffering"]]},
+// Forbidden Morty: exotic, paper, GF Mortanic only.
+{n:"Forbidden Morty",img:"grafiki/morty/18_forbidden_morty.webp",r:"exotic",ty:"paper",b:[478,403,383,363],ls:[[1,"Brand"],[5,"Erase"],[12,"Negative Energy"],[17,"Necrosis"],[22,"Piercing Stare"],[26,"Denial"],[32,"Arkham Trap"],[36,"Elder Curse"],[42,"Arcane Cast"]]},
+// Wine Boy Morty: rare, paper, Mortyland only.
+{n:"Wine Boy Morty",img:"grafiki/morty/19_wine_boy_morty.webp",r:"rare",ty:"paper",b:[428,303,333,363],ls:[[1,"Lift"],[6,"Break In"],[12,"Mope"],[16,"Salivate"],[20,"Waft"],[26,"Magic Door"],[32,"Regenerate"],[37,"Headache"],[42,"Stay Alive"]]},
+// Ventriloquiver Morty: epic, scissors, Plumbubo Prime 51b only.
+{n:"Ventriloquiver Morty",img:"grafiki/morty/20_ventriloquiver_morty.webp",r:"epic",ty:"scissors",b:[448,333,323,343],ls:[[1,"Cut"],[1,"Sneer"],[5,"Flail"],[10,"Snub"],[16,"Cutting Gaze"],[21,"Punked"],[27,"Grab"],[32,"Mock"],[40,"Volley"]]},
+// Wasp Morty: epic, scissors, Mortopia only.
+{n:"Wasp Morty",img:"grafiki/morty/21_wasp_morty.webp",r:"epic",ty:"scissors",b:[408,343,333,363],ls:[[1,"Nibble"],[1,"Sting"],[6,"Lick"],[12,"Salivate"],[17,"Provoke"],[22,"Enrage"],[27,"Wing Blast"],[35,"Extreme Reaction"]]},
+// Squid Morty: exotic, rock, Plumbubo Prime 51b only.
+{n:"Squid Morty",img:"grafiki/morty/22_squid_morty.webp",r:"exotic",ty:"rock",b:[508,353,393,363],ls:[[1,"Cry"],[1,"Spar"],[8,"Flail"],[13,"Mortify"],[18,"Swing"],[23,"Splash"],[27,"Hydro Blast"],[32,"Squid Costume"],[40,"Decoy Line"]]},
+// Hockey Stick Morteh: rare, scissors, spawns in ALL dimensions.
+{n:"Hockey Stick Morteh",img:"grafiki/morty/23_hockey_stick_morty.webp",r:"rare",ty:"scissors",b:[428,333,313,363],ls:[[1,"Condition"],[1,"Swing"],[7,"Protect"],[15,"Bunt"],[22,"Strengthen"],[28,"Trip"],[35,"Leg Sweep"],[40,"Slash"]]},
+// Rabbit Morty: common, scissors, spawns in Mortyland.
+{n:"Rabbit Morty",img:"grafiki/morty/24_rabbit_morty.webp",r:"common",ty:"scissors",b:[368,283,253,253],ls:[[1,"Nibble"],[1,"Sneer"],[7,"Provoke"],[11,"Dig"],[16,"Puffy Tail"],[21,"Rush"],[24,"Snub"],[29,"Scratching Post"]]},
+// Evil Rabbit Morty: rare, scissors, does not spawn anywhere (evolves from 4 Rabbit Mortys, see EVO).
+{n:"Evil Rabbit Morty",img:"grafiki/morty/25_evil_rabbit_morty.webp",r:"rare",ty:"scissors",b:[428,333,293,293],ls:[[1,"Nibble"],[1,"Sneer"],[9,"Provoke"],[13,"Dig"],[17,"Puffy Tail"],[22,"Rush"],[24,"Snub"],[30,"Scratching Post"],[34,"Mind Meld"],[39,"Hypnotize"]]},
+// Gardener Morty: exotic, scissors, Plumbubo Prime 51b only.
+{n:"Gardener Morty",img:"grafiki/morty/26_gardener_morty.webp",r:"exotic",ty:"scissors",b:[488,363,353,393],ls:[[1,"Sneer"],[1,"Condition"],[6,"Relax"],[12,"Clarity"],[16,"Drowse"],[20,"Focus"],[20,"Heave Down"],[24,"Soul Search"],[30,"Strip Dance"],[36,"The End"]]},
+// Hockey Morteh: epic, rock, spawns in ALL dimensions.
+{n:"Hockey Morteh",img:"grafiki/morty/27_hockey_morteh.webp",r:"epic",ty:"rock",b:[458,383,343,333],ls:[[1,"Dead Stare"],[6,"Spar"],[12,"Jab"],[17,"Swing"],[22,"Distract"],[28,"Headbutt"],[34,"Body-Check"],[40,"Charging"],[45,"Face-fisted"]]},
+// Slick Morty: exotic, paper, Plumbubo Prime 51b only.
+{n:"Slick Morty",img:"grafiki/morty/28_slick_morty.webp",r:"exotic",ty:"paper",b:[478,353,363,373],ls:[[1,"Scrunch"],[1,"Cry"],[6,"Suit & Boot"],[13,"Stare Down"],[18,"Rush"],[22,"Snub"],[28,"Piercing Stare"],[34,"Blood Pressure"],[40,"Iron Out"]]},
+// Scaly Morty: exotic, scissors, Mortopia only.
+{n:"Scaly Morty",img:"grafiki/morty/29_scaly_morty.webp",r:"exotic",ty:"scissors",b:[468,383,363,343],ls:[[1,"Probe"],[6,"Distract"],[8,"Flail"],[12,"Repress"],[16,"Jab"],[20,"Mortify"],[26,"Invasion"],[32,"Hypnotize"],[38,"Mind Meld"]]},
+// Specs Morty: exotic, paper, Mortyland only.
+{n:"Specs Morty",img:"grafiki/morty/30_specs_morty.webp",r:"exotic",ty:"paper",b:[468,363,393,383],ls:[[1,"Brand"],[1,"Sneer"],[6,"Provoke"],[12,"Crimp"],[16,"Erase"],[22,"Bunt"],[26,"Defend"],[34,"Recitation"],[45,"Higher Education"],[50,"Hit the Books"]]},
+// Left Handed Morty: exotic, paper, Plumbubo Prime 51b only.
+{n:"Left Handed Morty",img:"grafiki/morty/31_left_handed_morty.webp",r:"exotic",ty:"paper",b:[468,363,393,333],ls:[[1,"Hug"],[6,"Fixer-Upper"],[10,"Flail"],[12,"Examine"],[16,"Scrunch"],[20,"Bunt"],[26,"Gross Out"],[32,"Smooch"],[37,"Humiliate"],[42,"Iron Out"]]},
+// Cop Morty: exotic, scissors, Plumbubo Prime 51b only.
+{n:"Cop Morty",img:"grafiki/morty/32_cop_morty.webp",r:"exotic",ty:"scissors",b:[458,383,393,363],ls:[[1,"Neutralise"],[1,"Cut"],[8,"Stare Down"],[13,"Blind Swing"],[17,"Blood Pressure"],[24,"Cutting Gaze"],[30,"Extort"],[35,"Humiliate"],[42,"Invasion"],[48,"Same Old Story"]]},
+// Nargles Morty: epic, scissors, Plumbubo Prime 51b only (its odd stats 335/367 are intended).
+{n:"Nargles Morty",img:"grafiki/morty/33_nargles_morty.webp",r:"epic",ty:"scissors",b:[448,363,335,367],ls:[[1,"Dead Stare"],[1,"Cut"],[6,"Stare Down"],[12,"Swing"],[17,"Cutting Gaze"],[22,"Extort"],[26,"Stickup"],[32,"Intimidate"],[37,"Mangle"]]},
+// Boob World Morty: epic, paper, spawns in ALL dimensions.
+{n:"Boob World Morty",img:"grafiki/morty/34_boob_world_morty.webp",r:"epic",ty:"paper",b:[448,333,343,323],ls:[[1,"Cry"],[1,"Outburst"],[6,"Dead Stare"],[13,"Mope"],[18,"Grab"],[23,"Attention"],[27,"Fan Art"],[32,"Obsessed"],[40,"Voice Over"]]},
+// Snake Morty: exotic, scissors, Mortopia only.
+{n:"Snake Morty",img:"grafiki/morty/35_snake_morty.webp",r:"exotic",ty:"scissors",b:[408,387,373,393],ls:[[1,"Condition"],[4,"Absorb"],[9,"Vomit"],[15,"Salivate"],[22,"Stare Down"],[26,"Crush"],[32,"Bunch Up"],[38,"Constrict"],[45,"Venomous Bite"]]},
+// Season Four Morty: exotic, scissors, Mortopia only.
+{n:"Season Four Morty",img:"grafiki/morty/36_season_four_morty.webp",r:"exotic",ty:"scissors",b:[458,363,383,343],ls:[[1,"Sneer"],[4,"Flail"],[11,"Provoke"],[16,"Blink"],[22,"Slurp"],[26,"Combustion"],[32,"Mock"],[38,"Death Crystal"],[42,"See the Truth"]]},
+// Shrimp Morty: rare, rock, Plumbubo Prime 51b only.
+{n:"Shrimp Morty",img:"grafiki/morty/37_shrimp_morty.webp",r:"rare",ty:"rock",b:[448,293,363,283],ls:[[1,"Encrust"],[1,"Harden"],[8,"Jab"],[12,"Relax"],[16,"Scuttle"],[23,"Grab"],[27,"Splash"],[32,"Tempura"],[38,"Claw"]]},
+// Turkey Soldier Morty: rare, rock, Plumbubo Prime 51b only.
+{n:"Turkey Soldier Morty",img:"grafiki/morty/38_turkey_soldier_morty.webp",r:"rare",ty:"rock",b:[438,293,333,313],ls:[[1,"Sneer"],[1,"Flail"],[6,"Kick"],[11,"Stare Down"],[16,"Enrage"],[23,"Perch & Poop"],[28,"Pray"],[33,"Defend"],[37,"Gobble Tango"],[45,"Truck full of turkeys"]]},
+// Forty Morty: rare, scissors, Mortopia only.
+{n:"Forty Morty",img:"grafiki/morty/39_forty_morty.webp",r:"rare",ty:"scissors",b:[428,363,333,313],ls:[[1,"Comb"],[1,"Belch"],[7,"Mope"],[13,"Protect"],[16,"Shave"],[20,"Sicken"],[26,"Soul Search"],[32,"Blood Pressure"],[37,"Bone Breaker"],[43,"Time Go By"]]}];
+SP.forEach(m=>{if(!m.a)m.a=m.b.map((v,k)=>Math.round(v/(k?22:18)))});
+// Dimension: [name, ids of the Mortys that can spawn there, player level needed to enter, map picture, button positions in percent of the map]
+const DIM=[["Mortyland",[1,2,3,5,6,7,8,11,14,15,19,23,24,27,30,34],1,"grafiki/maps/mortyland.webp",{storage:[41.3,47.9],portal:[47.6,47.3],heal:[57.3,47.9],shop:[75.1,48.3],lab:[60.4,60.5],mortys:[[31.4,15.2],[59.4,19.7],[35,33.9],[35.2,74.6]],start:[34.7,55.2]}],["Plumbubo Prime 51b",[5,6,7,9,13,20,22,23,26,27,28,31,32,33,34,37,38],5,"grafiki/maps/plumbubo_prime_51b.webp",{lab:[32.3,18.5],portal:[40.4,12.7],heal:[49.5,12.7],storage:[42.9,29.9],shop:[48.7,46.4],mortys:[[25.7,23],[62.4,45.9],[65,57.7],[48.4,69.7]],start:[48.3,70.9]}],["Mortopia",[5,6,7,10,17,21,23,27,29,34,35,36,39],15,"grafiki/maps/mortopia.webp",{portal:[24.7,34.8],shop:[51.6,31.6],lab:[71.2,31.4],heal:[56.9,49.8],storage:[71.8,53.8],mortys:[[24.5,27.5],[30.6,43.1],[47.1,70.4],[66.5,63.4]],start:[54.5,80.5]}],["GF Mortanic",[5,6,7,12,16,18,23,27,34],30,"grafiki/maps/gf_mortanic.webp",{portal:[49.7,17.2],storage:[49.7,31.8],shop:[34.8,32.6],lab:[64.8,32.6],heal:[49.9,56.9],mortys:[[37.2,42.1],[62.4,42.8],[57.2,63.2],[30.7,71.1]],start:[49.7,50.2]}]];
+/* Evolution: key = id of the Morty that evolves (number in SP), to = id of the Morty it becomes, n = how many Mortys of that kind are needed in total
+   (the chosen one plus n-1 others that are used up). The evolved Morty keeps the chosen one's level, XP and IVs. Done in Storage > Evolve Mortys. */
+const EVO={24:{to:25,n:4}};
+// Shop items: k = item key, n = name, d = description, p = price in Flurbos
+const SHOP=[
+{k:"chip",n:"Morty Manipulator Chip",d:"Captures a wild Morty with low health.",p:30},
+{k:"potion",n:"Serum",d:"Heals 20 HP.",p:20},
+{k:"great",n:"Great Serum",d:"Heals 50 HP.",p:50},
+{k:"sens",n:"Sensational Serum",d:"Heals 200 HP.",p:150},
+{k:"pure",n:"Pure Serum",d:"Heals all HP.",p:300},
+{k:"seed",n:"Level Up Seed",d:"Raises a Morty by 1 level. Cannot be used in battle.",p:500}];
+/* ===== end of data ===== */
+/* ===== DEVICE PANEL (map > device icon next to the XP bar). Your Mortys = My Team, Items = item list, gear = Settings, red trapezoid = Back. Mortys & Attacks = lists of every Morty and every move (screen mba). Win Mortys / Salesman Ricks: not added yet. ===== */
+const DVI={"mortys": "grafiki/ui/dv_mortys.webp", "items": "grafiki/ui/dv_items.webp", "win": "grafiki/ui/dv_win.webp", "rick": "grafiki/ui/dv_rick.webp", "mba": "grafiki/ui/dv_deck.webp", "panel": "grafiki/ui/dv_panel.webp", "settings": "grafiki/ui/dv_settings.webp", "backy": "grafiki/ui/dv_backy.webp"};
+let DEV=0,DVB=0,DVM=0; // DEV: panel open, DVB: a screen was opened from the panel (its Back returns to the panel), DVM: "nothing added yet" message shown
+function devopen(){DEV=1;DVM=0;DVB=0;R()}
+function dvgo(v){DEV=0;DVM=0;DVB=1;view(v)}
+function dvmsg(){DVM=1;R()}
+function dvset(){DEV=0;DVM=0;DVB=1;opts()}
+function dvback(){if(DVM){DVM=0}else DEV=0;R()}
+function dvbk(b){b.classList.add("fl");setTimeout(dvback,100)}
+function devpanel(){return`<div class="dvo" onclick="if(event.target==this)dvback()"><div class="dvp" role="dialog" aria-label="Device"><img class="dvbg" alt="" src="${DVI.panel}">${DVM?"":`<button class="dvb" style="left:23.239%;top:19.368%;width:28.777%" onclick="dvgo('myteam')" aria-label="Your Mortys"><img alt="" src="${DVI.mortys}"></button><button class="dvb" style="left:52.763%;top:19.368%;width:28.478%" onclick="dvgo('items')" aria-label="Items"><img alt="" src="${DVI.items}"></button><button class="dvb" style="left:23.239%;top:39.125%;width:35.129%" onclick="dvmsg()" aria-label="Win Mortys"><img alt="" src="${DVI.win}"></button><button class="dvb" style="left:59.117%;top:39.125%;width:22.050%" onclick="dvmsg()" aria-label="Salesman Ricks"><img alt="" src="${DVI.rick}"></button><button class="dvb" style="left:23.239%;top:58.884%;width:20.405%" onclick="MB.q='';dvgo('mba')" aria-label="Mortys &amp; Attacks"><img alt="" src="${DVI.mba}"></button><button class="dvb" style="left:44.392%;top:58.884%;width:36.810%" onclick="dvset()" aria-label="Settings"><img alt="" src="${DVI.settings}"></button>`}${DVM?`<div class="dvm"><b>There is nothing added yet</b></div>`:""}<div class="dvhi">Hello ${String(G.user||"Player").replace(/[^\w-]/g,"").slice(0,16)||"Player"}</div><button class="dvh dvt" style="left:86.367%;top:35.505%;width:9.061%;height:24.867%" onclick="dvbk(this)" aria-label="Back"><img alt="" src="${DVI.backy}"></button></div></div>`}
+function items(){let ks=SHOP.filter(x=>G.it[x.k]>0);return`<button class=s onclick="view('menu')">Back</button><h1>Items</h1><div class=c><b>Flurbos: ${G.c}</b></div>`+(ks.length?ks.map(x=>`<div class=c><div class="row"><span class="ico">${SI[x.k]}</span><div style="flex:1"><b>${x.n}</b><br><small>${x.d}</small></div><b>×${G.it[x.k]}</b></div></div>`).join(""):`<div class=c><small>You have no items.</small></div>`)}
+const ST=["HP","Atk","Def","Spd"],K="pmr4";
+const TY={rock:"Rock",paper:"Paper",scissors:"Scissors"},BEATS={rock:"scissors",scissors:"paper",paper:"rock"};
+const TIC={rock:'<img class="ti" alt="rock" src="grafiki/ui/ikona_rock.webp">',paper:'<img class="ti" alt="paper" src="grafiki/ui/ikona_paper.webp">',scissors:'<img class="ti" alt="scissors" src="grafiki/ui/ikona_scissors.webp">'};
+const STAR='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3 6.9 7.5.7-5.7 5 1.7 7.4L12 18l-6.5 4 1.7-7.4-5.7-5 7.5-.7z"/></svg>';
+const rb=r=>`<span class="rb rb-${r}">${STAR}${r[0].toUpperCase()+r.slice(1)}</span>`;
+const tb=t=>`<span class="tb">${TIC[t]||""}${TY[t]||"Typeless"}</span>`;
+const rnd=(a,b)=>a+Math.floor(Math.random()*(b-a+1));
+const raw=(s,i,l,v)=>Math.round(SP[s].a[i]+(SP[s].b[i]-SP[s].a[i])*(l-5)/95-30*(16-v)/15*Math.pow(l/100,1.09));
+const band=(s,i,l,v)=>{let t=raw(s,i,l,v),lo=v,hi=v;while(lo>1&&raw(s,i,l,lo-1)==t)lo--;while(hi<16&&raw(s,i,l,hi+1)==t)hi++;return[lo,hi]};
+const st=(m,i,l=m.l,v=m.iv[i])=>raw(m.s,i,l,v);
+const ef=(m,i)=>Math.max(1,st(m,i)*mul(i,m.sx?m.sx[i]:0));
+const rng=(m,i)=>band(m.s,i,m.l,m.iv[i]);
+const mk=(s,l)=>{let a=[rnd(1,16),rnd(1,16),rnd(1,16)],m={s,l,xp:0,iv:[Math.floor((a[0]+a[1]+a[2])/3),...a]};m.hp=st(m,0);return m};
+let G={mons:[],box:[],dim:0,c:100,it:{potion:3,chip:3,great:0,sens:0,pure:0,seed:0},pl:{l:1,xp:0},user:""},S="title",B=null,N="",SEL=-1;
+try{let d=JSON.parse(localStorage.getItem(K));if(!d){d=JSON.parse(localStorage.getItem("pmr3"));if(d){const f=m=>{if(m.s>=2&&m.s<=5)return 0;if(m.s>=6)m.s-=4;return 1};if(d.mons)d.mons=d.mons.filter(f);if(d.box)d.box=d.box.filter(f);if(d.mons&&!d.mons.length&&d.box&&d.box.length)d.mons.push(d.box.shift())}}if(d)G=Object.assign(G,d);if(!d||!d.box)G.box=G.mons.splice(5)}catch(e){}
+G.it=Object.assign({potion:0,chip:0,great:0,sens:0,pure:0,seed:0},G.it);
+const save=()=>{try{ids();localStorage.setItem(K,JSON.stringify(G))}catch(e){}};
+const lead=()=>G.mons.slice(0,5).find(m=>m.hp>0);
+const L=t=>{B.log.push(t);B.n=(B.n|0)+1;if(B.log.length>8)B.log.shift()};
+const nm=m=>SP[m.s].n;
+const ic=m=>SP[m.s].img?`<img class="pic" alt="" src="${SP[m.s].img}">`:`<span class="big">${SP[m.s].e}</span>`;
+const known=m=>SP[m.s].ls.filter(x=>m.l>=x[0]).map(x=>x[1]);
+// Moves a Morty fights with: the ones picked in the Lab (m.eq), otherwise its 4 most recently learned
+const mvs=m=>{let k=known(m),q=m.eq?m.eq.filter(n=>k.includes(n)).slice(0,4):[];return q.length?q:k.slice(-4)};
+const apl=(p,n)=>MV[n].ap-((p.ap||{})[n]||0);
+const bmv=p=>{let q=mvs(p);return q.every(n=>apl(p,n)<1)?["Squirm"]:q};
+const BI=`<img class="bi" alt="buff" src="grafiki/ui/buff.webp">`;
+const DI=`<img class="bi" alt="debuff" src="grafiki/ui/debuff.webp">`;
+const fxs=n=>{let m=MV[n];return m.stg?m.stg.flatMap(x=>x.fx||[]):(m.fx||[])},pw=n=>{let m=MV[n];return m.p||(m.stg||[]).reduce((a,x)=>a||x.p||0,0)};
+const fxl=(n,w,I)=>{let f=fxs(n).filter(x=>x[0]==w);return f.length?`(${I} ${[...new Set(f.flatMap(x=>x[1]))].map(i=>SN[i]).join(" + ")})`:""};
+const bfx=n=>[fxl(n,"self",BI),fxl(n,"enemy",DI),fxl(n,"selfdown",DI)].filter(Boolean).join(" ");
+const apt=v=>v==Infinity?"∞":v;
+/* ===== STATUS EFFECTS: poison + paralyze. A move (or a stage of a staged move) gets  ps:"poison"  or  ps:"paralyze"  (or a list of both),
+   optional  pc:<chance %>  (default 100 = always, after the move hits). Both last until the battle ends. ===== */
+const PZC=0.15; // paralyzed Morty: chance per turn that its attack does not work
+const PSI={poison:"grafiki/ui/status_poison.webp",paralyze:"grafiki/ui/status_paralyze.webp"};
+const PSN={poison:"poisoned",paralyze:"paralyzed"};
+const sti=m=>m.ps?Object.keys(m.ps).map(k=>`<img class="stt" alt="${k}" src="${PSI[k]}">`).join(""):"";
+const psl=n=>{let m=MV[n];return[...new Set((m.stg||[m]).flatMap(q=>[].concat(q.ps||[])))].map(k=>`<img class="stt" alt="${k}" src="${PSI[k]}">`).join("")};
+function setps(d,k,c){if(d.hp<=0||(c!=null&&Math.random()*100>=c))return;d.ps=d.ps||{};if(d.ps[k])return;d.ps[k]=1;L(`${nm(d)} was ${PSN[k]}! ${pic(k)}`)}
+function ptick(m){if(m&&m.hp>0&&m.ps&&m.ps.poison){let x=Math.min(m.hp,Math.max(1,Math.round(st(m,0)*.05)));m.hp-=x;L(`${nm(m)} is hurt by poison: ${x} damage ${pic("poison")}`)}}
+/* ===== EVADE + LIFE STEAL. Evade is stat index 5: +1 evade works exactly like -1 accuracy on the enemy (net modifier clamped like every stat).
+   Life steal: rg:<percent> on a move or on a stage of a staged move; heals that % of the damage the attack would deal (type + buffs included,
+   not capped by the enemy's remaining HP). Shows the regen icon in the move frame only. ===== */
+const RGI='<img class="stt" alt="regen" src="grafiki/ui/status_regen.webp">';
+const rgl=n=>{let m=MV[n];return(m.stg||[m]).some(q=>q.rg)?RGI:""};
+const aca=(a,d,x)=>Math.min(100,x*mul(4,a.sx?a.sx[4]||0:0)/mul(5,d.sx?d.sx[5]||0:0));
+function drn(a,r,q){if(!q.rg||a.hp<=0)return;let h=Math.min(st(a,0)-a.hp,Math.max(1,Math.round(r*q.rg/100)));if(h>0){a.hp+=h;L(`${nm(a)} absorbed ${h} HP ${RGI}`)}}
+const mlab=(n,p)=>{let m=MV[n],k=[pw(n)||"",m.rec?`(self ${m.rec})`:"",bfx(n),psl(n)].filter(Boolean).join(" ");return`${n} ${TIC[m.t]||""} ${rgl(n)} ${k}, AP ${p&&m.ap!=Infinity?apl(p,n)+"/"+m.ap:apt(p?apl(p,n):m.ap)}`};
+const bar=m=>{let p=Math.min(100,Math.max(0,100*m.hp/st(m,0)));return`<div class="bar"><i style="width:${p}%;background:${p>=65?"#3fae6a":p>=30?"#e6b800":"#d4493f"}"></i></div>`};
+const det=(m,b,noiv)=>`<div class="c r-${SP[m.s].r}"><div class="row"><span class="ico">${ic(m)}</span><div style="flex:1"><b>${nm(m)}</b><br>${rb(SP[m.s].r)} ${tb(SP[m.s].ty)} <small>Lv ${m.l}</small><br><small>${ST.map((n,j)=>`${n} ${st(m,j)}`).join(" / ")}</small>${bar(m)}<small>${Math.max(0,m.hp)}/${st(m,0)} HP</small></div></div>${noiv?"":`<div class="iv">IVs: ${ivv(m)}</div>`}${G.it.seed>0&&m.l<100?`<button class=s onclick="seed('${G.mons.indexOf(m)>=0?"m":"b"}',${G.mons.indexOf(m)>=0?G.mons.indexOf(m):G.box.indexOf(m)})">Use Level Up Seed (${G.it.seed})</button>`:""}${b||""}</div>`;
+const card=m=>`<div class="c r-${SP[m.s].r}"><div class="row"><span class="ico">${ic(m)}</span><div style="flex:1"><b>${nm(m)}</b>${sti(m)}<br>${rb(SP[m.s].r)} ${tb(SP[m.s].ty)} <small>Lv ${m.l}</small>${bar(m)}<small>${Math.max(0,m.hp)}/${st(m,0)} HP</small></div></div></div>`;
+const ivv=m=>{let r=ST.map((n,i)=>rng(m,i));return ST.map((n,i)=>`${n} ${r[i][0]==r[i][1]?r[i][0]+(r[i][0]==16?" ★":""):r[i][0]+"–"+r[i][1]}`).join(", ")+(r.some(x=>x[0]!=x[1])?"<br><small>Level up this Morty to narrow the ranges.</small>":"")};
+const emv=e=>{let l=mvs(e);return l[rnd(0,l.length-1)]};
+const tm=(mt,dt)=>mt=="normal"||!dt||dt=="none"?1:BEATS[mt]==dt?1.5:BEATS[dt]==mt?.67:1;
+function dmg(a,d,n,pv){let mv=MV[n],r=Math.sqrt(st(a,1)/st(d,2)),s=mul(1,a.sx?a.sx[1]:0)/mul(2,d.sx?d.sx[2]:0),x=Math.floor(2*a.l/5+2)*(pv||mv.p)*r/65*s;return Math.max(1,Math.floor(x*tm(mv.t,SP[d.s].ty)*rnd(85,100)/100))}
+const afx=(a,d,f)=>{let t=f[0]=="enemy"?d:a,s=f[0]=="self"?1:-1;t.sx=t.sx||[0,0,0,0,0,0,0];f[1].forEach(i=>t.sx[i]=Math.max(-SMAX,Math.min(SMAX,(t.sx[i]||0)+s*STRV(f[2]))));L(`${nm(t)}’s ${f[1].map(i=>SN[i]).join(" and ")} ${s>0?"rose":"fell"} (${f[2]}). ${s>0?BI:DI}`)};
+/* ===== BATTLE PACING: every visible action is one step (a yield). BT ms pass after each step (1000 = 1 second). ===== */
+const BT=1000,BTS=1000,BTP=1000; // BTP = short pause between the parts of one multi-part move (the full BT pause comes after its last part) // BTS = shorter pause used only after a Swap
+const pic=k=>`<img class="stt" alt="${k}" src="${PSI[k]}">`;
+const mic=n=>{let m=MV[n],f=(m.stg||[m]).flatMap(x=>x.fx||[]);return[TIC[m.t]||"",f.some(x=>x[0]=="self")?BI:"",f.some(x=>x[0]=="enemy"||x[0]=="selfdown")?DI:"",psl(n)].filter(Boolean).join(" ")};
+function seq(g){B.busy=1;let b=B;const nx=()=>{let r;try{r=g.next()}catch(x){console.error(x);b.busy=0;R();return}if(r.done){b.busy=0;R();return}R();b.tm=setTimeout(nx,r.value||BT)};nx()}
+function* hitS(a,d,n){
+let mv=MV[n],single=!mv.stg,used=0,ok=0;
+if(a.ps&&a.ps.paralyze&&Math.random()<PZC){L(`${nm(a)} is paralyzed and can’t move! ${pic("paralyze")}`);yield;return 0}
+const U=()=>{if(!used){used=1;L(`<b>${nm(a)} used ${n}!</b>`)}};
+const parts=mv.stg||[mv];let sh=0;
+for(let pi=0;pi<parts.length;pi++){const q=parts[pi];
+if(a.hp<=0||d.hp<=0)break;
+let en=(q.fx||[]).some(f=>f[0]=="enemy");
+if(q.acc&&Math.random()*100>=(q.p||q.ps||en?aca(a,d,q.acc):q.acc)){
+if(!single)continue; // staged move: a part that fails is not shown at all; if nothing works the whole move shows one "missed" line (see below)
+L(`<b>${nm(a)} used ${n}, but it missed!</b>`);sh=0;yield BT;continue}
+ok=1;let r=0,acts=[];
+if(q.p)acts.push(()=>{let t=tm(mv.t,SP[d.s].ty);r=dmg(a,d,n,q.p);let cr=Math.random()*100<crc(a);if(cr)r=Math.max(1,Math.round(r*CRM));let x=Math.min(d.hp,r);d.hp-=x;let s=`${x} damage${t>1?" (super effective)":t<1?" (not very effective)":""}${cr?", it was a critical hit!":""}`;if(single){U();L(`${s} ${mic(n)}`)}else L(`${n}: ${s}`)});
+if(q.rg&&q.p)acts.push(()=>drn(a,r,q));
+(q.fx||[]).forEach(f=>f[1].forEach(i=>acts.push(()=>{if(f[0]=="enemy"&&d.hp<=0)return;if(f[3]!=null&&Math.random()*100>=f[3])return;afx(a,d,[f[0],[i],f[2]])})));
+[].concat(q.ps||[]).forEach(k=>acts.push(()=>{if(d.hp>0)setps(d,k,q.pc)}));
+for(let ai=0;ai<acts.length;ai++){let ac=acts[ai],c=B.n|0;if(single){U();ac()}else{ac();if(!used&&(B.n|0)>c){let k=(B.n|0)-c;used=1;B.log.splice(Math.max(0,B.log.length-k),0,`<b>${nm(a)} used ${n}!</b>`);B.n=(B.n|0)+1;while(B.log.length>8)B.log.shift()}}if((B.n|0)>c){let mo=ai<acts.length-1||pi<parts.length-1;sh=mo;yield mo?BTP:BT}}
+}
+if(!single&&!used){L(`<b>${nm(a)} used ${n}, but it missed!</b>`);sh=0;yield BT}
+if(sh&&BT>BTP)yield BT-BTP;
+return ok}
+function* endS(p){
+if(!B.over){
+for(const m of[p,B.e]){let c=B.n|0;ptick(m);if((B.n|0)>c)yield}
+if(B.e.hp<=0){L(`${nm(B.e)} was defeated!`);yield;win(p.hp>0?p:lead()||p,B.e);B.over=1}
+else if(!lead()){L("All your Mortys fainted.");B.over=1}
+else if(p.hp<=0){L(`${nm(p)} fainted! ${nm(lead())} takes over.`)}
+}
+if(B.over)G.mons.forEach(m=>{m.sx=null;m.ps=null});
+save()}
+function roll(d){for(const q of ROAM)if(Math.random()*100<(q.home[d]??q.base))return q.id;let pool=DIM[d][1],av=RAR.filter(r=>pool.some(i=>SP[i].r==r));if(!av.length)return -1;let x=Math.random()*av.reduce((a,r)=>a+CHANCE[r],0),r=av.find(r=>(x-=CHANCE[r])<0)||av[0],c=pool.filter(i=>SP[i].r==r);return c[rnd(0,c.length-1)]}
+function begin(){let m=mk(0,5);m.iv=[16,16,16,16];m.hp=st(m,0);G.mons=[m];save();R()}
+function go(d,sid,spot){if(G.pl.l<DIM[d][2]){N=`${DIM[d][0]} unlocks at player level ${DIM[d][2]}.`;return R()}let id=sid==null?roll(d):sid;if(id<0){N="No Mortys live in this dimension yet.";return R()}if(!lead()){N="Heal your team first.";return R()}let lv=Math.min(...G.mons.slice(0,5).map(m=>m.l)),e=mk(id,lv);if(spot!=null&&SPN&&SPN.d==d){SPN.iv=SPN.iv||{};let p=SPN.iv[spot];if(p&&p.s==id){for(let i=1;i<4;i++)e.iv[i]=Math.min(e.iv[i],p.iv[i]);e.iv[0]=Math.floor((e.iv[1]+e.iv[2]+e.iv[3])/3);e.hp=st(e,0)}SPN.iv[spot]={s:id,iv:e.iv.slice()}}G.mons.forEach(m=>{m.sx=null;m.ps=null});B={e,log:[`A wild ${nm(e)} appeared!`],over:0,n:0,spot};S="battle";N="";R()}
+function mv(i){if(B.over||B.busy)return;let p=lead(),e=B.e,l=bmv(p),pm=l[i];if(!pm)return;if(apl(p,pm)<1){L(`${pm} is out of AP.`);return R()}if(MV[pm].ap!=Infinity)(p.ap=p.ap||{})[pm]=(p.ap[pm]||0)+1;let o=ef(p,3)>=ef(e,3)?[0,1]:[1,0];seq(function*(){for(let w of o){if(p.hp<=0||e.hp<=0)break;if(w)yield*hitS(e,p,emv(e));else{let ok=yield*hitS(p,e,pm);if(MV[pm].rec&&ok){let x=Math.min(p.hp,dmg(p,p,"Squirm Recoil"));p.hp-=x;L(`${nm(p)} hurt itself: ${x} damage`);yield}}}yield*endS(p)}())}
+function cg(){if(B.over||B.busy)return;if(G.it.chip<1){L("You are out of Manipulator Chips. Buy more in the shop.");return R()}if(B.e.hp>.4*st(B.e,0)){L("The chip would not work yet. Weaken the Morty to 40% HP or less first.");return R()}G.it.chip--;let e=B.e,p=lead();seq(function*(){L("You throw a Morty Manipulator Chip...");yield;if(e.hp<=.4*st(e,0)){e.hp=st(e,0);e.ap={};e.sx=null;e.ps=null;let t=G.mons.length<5;(t?G.mons:G.box).push(e);B.caught=e;B.where=t?"your team":"storage";L(`Caught ${nm(e)}!`);pxs(30+e.l*3);sku();B.over=1}else{L("It broke free!");yield;yield*hitS(e,p,emv(e))}yield*endS(p)}())}
+const HEAL={potion:[20,"Serum"],great:[50,"Great Serum"],sens:[200,"Sensational Serum"],pure:[Infinity,"Pure Serum"]};
+function pt(k){k=k||"potion";let p=lead(),h=HEAL[k];if(B.over||B.busy||!h||G.it[k]<1||!p)return;G.it[k]--;seq(function*(){let b=p.hp;p.hp=Math.min(st(p,0),p.hp+h[0]);L(`${nm(p)} used a ${h[1]}: +${p.hp-b} HP`);yield;yield*hitS(B.e,p,emv(B.e));yield*endS(p)}())}
+function sw(){let p=lead();if(B.busy)return;if(B.over||G.mons.slice(0,5).filter(m=>m.hp>0).length<2){L("No other Morty is ready to fight.");return R()}seq(function*(){G.mons.splice(G.mons.indexOf(p),1);G.mons.splice(Math.min(5,G.mons.length),0,p);L(`${nm(lead())} jumps in!`);yield BTS;yield*hitS(B.e,lead(),emv(B.e));yield*endS(lead())}())}
+const SKB=0.1,SKN=5; // XP streak: every blue chevron under the XP bar = +10% player XP in the next fights (max 5 chevrons)
+function pxs(n){let k=G.sk||0,b=Math.round(n*SKB*k);pxp(n+b);if(b)L(`Streak bonus: +${Math.round(SKB*k*100)}% player XP (+${b}).`)}
+function sku(){G.sk=Math.min(SKN,(G.sk||0)+1)}
+function pxp(n){G.pl.xp+=n;while(G.pl.xp>=G.pl.l*100){G.pl.xp-=G.pl.l*100;G.pl.l++;L(`You reached player level ${G.pl.l}!`)}}
+function win(p,e){let x=20+e.l*6;p.xp+=x;L(`${nm(p)} gained ${x} XP.`);while(p.xp>=p.l*p.l*2&&p.l<100){p.xp-=p.l*p.l*2;let o=ST.map((n,i)=>st(p,i));p.l++;let g=ST.map((n,i)=>st(p,i)-o[i]);p.hp+=g[0];p.lg=g;L(`${nm(p)} reached Lv ${p.l}! ${ST.map((n,i)=>`${n} +${g[i]}`).join(", ")}`);SP[p.s].ls.filter(y=>y[0]==p.l).forEach(y=>{L(`${nm(p)} learned ${y[1]}!`);if(p.eq&&p.eq.length<4)p.eq.push(y[1])})}pxs(10+e.l*2);sku();let g=3+e.l;G.c+=g;L(`You found ${g} Flurbos.`)}
+function seed(w,i){let m=(w=="m"?G.mons:G.box)[i];if(!m||B||G.it.seed<1||m.l>=100)return;G.it.seed--;let o=ST.map((n,j)=>st(m,j));m.l++;let g=ST.map((n,j)=>st(m,j)-o[j]);if(m.hp>0)m.hp+=g[0];m.lg=g;N=`${nm(m)} ate a Level Up Seed and reached Lv ${m.l}! ${ST.map((n,j)=>`${n} +${g[j]}`).join(", ")}`;SP[m.s].ls.filter(y=>y[0]==m.l).forEach(y=>{N+=`<br>${nm(m)} learned ${y[1]}!`;if(m.eq&&m.eq.length<4)m.eq.push(y[1])});save();R()}
+function toBox(i){if(G.mons.length<2)return;G.box.push(G.mons.splice(i,1)[0]);save();R()}
+function toTeam(i){if(G.mons.length>=5)return;G.mons.push(G.box.splice(i,1)[0]);SEL=-1;save();R()}
+function swp(i){let m=G.box[SEL],o=G.mons[i];if(!m)return;G.mons[i]=m;G.box[SEL]=o;SEL=-1;save();R()}
+function tp(i){if(G.pl.l<DIM[i][2]){N=`${DIM[i][0]} unlocks at player level ${DIM[i][2]}.`;return R()}if(i==G.dim){N="You are already here.";return R()}G.dim=i;N=`You step through the portal into ${DIM[i][0]}.`;S="menu";save();R()}
+function run(){if(B&&B.busy)return;if(B&&B.spot!=null&&SPN&&SPN.d==G.dim&&(B.caught||B.e.hp<=0)){if(SPN.iv){delete SPN.iv[B.spot];if(SPN.pend!=null)delete SPN.iv[SPN.pend]}if(SPN.pend!=null&&SPN.pend!=B.spot)SPN.m[SPN.pend]=roll(G.dim);SPN.pend=B.spot;SPN.m[B.spot]=-1}let lost=B&&B.over&&!lead();S="menu";B=null;if(lost){G.sk=0;G.mons.forEach(m=>{m.hp=st(m,0);m.sx=null;m.ps=null;m.ap={}});N="You wake up in the healing center. Your Mortys have been healed.";S="heal";HPH=2;HB=0;let hp=(DIM[G.dim][4]||{}).heal||[50,50];POS={d:G.dim,p:[hp[0],hp[1]],dy:0,c:1};save()}R()}
+const SN=["HP","Atk","Def","Spd","Accuracy","Evade","Crit"];
+const mdl=(n,p)=>{let m=MV[n],f=fxs(n),d=[pw(n)?`Power ${pw(n)}`:"",...f.map(x=>`${x[0]=="enemy"?"Enemy":"Self"} ${x[1].map(i=>SN[i]).join(" + ")} ${x[0]=="self"?"up":"down"} (${x[2]}${x[3]!=null?", "+x[3]+"%":""})`)].filter(Boolean).join(", ");return`<b>${n}</b> ${TIC[m.t]||""} ${bfx(n)}<br><span style="font-weight:400;font-size:13px">${d}${m.stg?` · Acc ${[...new Set(m.stg.map(x=>x.acc))].join("/")}% per part`:m.acc?` · Acc ${m.acc}%`:""} · AP ${p&&m.ap!=Infinity?apl(p,n)+"/"+m.ap:apt(m.ap)}</span>`};
+function eqm(i,j){let m=G.mons[i],k=known(m),n=k[j],e=mvs(m).slice(),x=e.indexOf(n);LN=null;if(x>=0){if(e.length>1)e.splice(x,1);else LN=[i,"A Morty needs at least 1 move."]}else if(e.length<4)e.push(n);else LN=[i,"Only 4 moves can be equipped. Unequip one first."];e.sort((a,b)=>k.indexOf(a)-k.indexOf(b));m.eq=e;save();R()}
+function eqr(i){G.mons[i].eq=null;LN=null;save();R()}
+const labc=(m,i)=>{let e=mvs(m),k=known(m);return`<div class="c r-${SP[m.s].r}"><div class="row"><span class="ico">${ic(m)}</span><div style="flex:1"><b>${nm(m)}</b><br><small>Lv ${m.l} · ${e.length} of 4 moves equipped</small></div></div>`+(k.length?k.map((n,j)=>`<button class="mvb${e.includes(n)?"":" s"}" onclick="eqm(${i},${j})">${e.includes(n)?"✔ ":""}${mdl(n,m)}</button>`).join("")+`<button class="s" onclick="eqr(${i})">Use latest 4 moves</button>`:`<div class="iv">This Morty has not learned any moves yet.</div>`)+(LN&&LN[0]==i?`<div class="iv">${LN[1]}</div>`:"")+`</div>`};
+function heal(){G.sk=0;G.mons.forEach(m=>{m.hp=st(m,0);m.sx=null;m.ps=null;m.ap={}});save();N="Your team is fully healed.";R()}
+function up(i){let m=G.mons.splice(i,1)[0];G.mons.unshift(m);save();R()}
+function reset(){if(confirm("Erase all your Mortys and start over?")){G={mons:[],box:[],dim:0,c:100,it:{potion:3,chip:3,great:0,sens:0,pure:0,seed:0},pl:{l:1,xp:0},user:G.user};S="menu";save();R()}}
+/* ===== MY TEAM: tap a card = show/hide IVs, hold + drag a card = change the team order (top Morty starts the fight) ===== */
+let TMO=new WeakSet();
+function tmInit(){document.querySelectorAll("#a .tm").forEach(el=>{el.addEventListener("pointerdown",e=>tmDown(e,el));el.addEventListener("contextmenu",e=>e.preventDefault());el.addEventListener("touchmove",ev=>{if(el.classList.contains("drag"))ev.preventDefault()},{passive:false})})}
+function tmDown(e,el){if(e.button>0||e.target.closest("button"))return;
+let sx=e.clientX,sy=e.clientY,lastY=sy,gy=0,drag=0,done=0,timer=null,iv=null,touch=e.pointerType!="mouse";
+const place=()=>{el.style.transform="none";
+for(let k=0;k<6;k++){let p=el.previousElementSibling,n=el.nextElementSibling,r;
+if(p&&p.classList.contains("tm")&&(r=p.getBoundingClientRect(),lastY<r.top+r.height/2)){p.before(el);continue}
+if(n&&n.classList.contains("tm")&&(r=n.getBoundingClientRect(),lastY>r.top+r.height/2)){n.after(el);continue}break}
+el.style.transform=`translateY(${lastY-gy-el.getBoundingClientRect().top}px)`};
+const start=()=>{if(drag||done)return;drag=1;clearTimeout(timer);gy=sy-el.getBoundingClientRect().top;el.classList.add("drag");try{el.setPointerCapture(e.pointerId)}catch(x){}
+iv=setInterval(()=>{if(lastY<70)scrollBy(0,-12);else if(lastY>innerHeight-70)scrollBy(0,12);place()},16);place()};
+const end=()=>{done=1;clearTimeout(timer);clearInterval(iv);document.removeEventListener("pointermove",mv);document.removeEventListener("pointerup",up);document.removeEventListener("pointercancel",cn)};
+const mv=ev=>{if(ev.pointerId!=e.pointerId)return;lastY=ev.clientY;let d=Math.hypot(ev.clientX-sx,ev.clientY-sy);
+if(!drag){if(touch){if(d>8){end()}}else if(d>5)start();if(!drag)return}place()};
+const up=ev=>{if(ev.pointerId!=e.pointerId)return;let was=drag;end();
+if(was){let old=G.mons.slice(),ord=[...document.querySelectorAll("#a .tm")].map(x=>+x.dataset.i);if(ord.some((v,i)=>v!=i)){G.mons=ord.map(i=>old[i]);save()}R()}
+else{let m=G.mons[+el.dataset.i];el.classList.toggle("open");if(m){el.classList.contains("open")?TMO.add(m):TMO.delete(m)}}};
+const cn=ev=>{if(ev.pointerId!=e.pointerId)return;let was=drag;end();if(was)R()};
+document.addEventListener("pointermove",mv);document.addEventListener("pointerup",up);document.addEventListener("pointercancel",cn);
+if(touch)timer=setTimeout(start,280)}
+/* ===== EVOLUTION (Storage > Evolve Mortys) ===== */
+let EVH=0,EVS=0,EVC=null,EVX=new Set(); // EVS: 0 off, 1 choose the Morty to evolve, 2 choose the Mortys to use up
+const EV_ALL=()=>G.mons.concat(G.box);
+const EV_CAN=()=>EV_ALL().filter(m=>EVO[m.s]); // every Morty that has an evolution (even without enough copies)
+const EV_OK=m=>EV_ALL().filter(x=>x.s==m.s).length>=EVO[m.s].n;
+const evcard=(m,b)=>`<div class="c r-${SP[m.s].r}"><div class="row"><span class="ico">${ic(m)}</span><div style="flex:1"><b>${nm(m)}</b><br>${rb(SP[m.s].r)} ${tb(SP[m.s].ty)} <small>Lv ${m.l}, ${G.mons.includes(m)?"team":"storage"}</small><br><small>${ST.map((n,j)=>`${n} ${st(m,j)}`).join(" / ")}</small></div></div><div class="iv">IVs: ${ivv(m)}</div>${b||""}</div>`;
+function evb(){if(EVH){EVH=0;view("stohub")}else evo(0)}
+function evo(s){if(B)return;EVH=0;EVS=s;EVC=null;EVX=new Set();N="";R()}
+function evpick(i){let m=EV_ALL()[i];if(!m||!EVO[m.s]||!EV_OK(m))return;EVC=m;EVX=new Set();EVS=2;N="";R()}
+function evtog(i){let m=EV_ALL()[i];if(!m||!EVC||m==EVC||m.s!=EVC.s)return;if(EVX.has(m))EVX.delete(m);else if(EVX.size<EVO[EVC.s].n-1)EVX.add(m);R()}
+function evgo(){let m=EVC,e=m&&EVO[m.s];if(!e||EVX.size!=e.n-1)return;
+let rest=G.mons.filter(x=>!EVX.has(x));
+if(!rest.length){N="Keep at least one Morty on your team.";R();return}
+if(!confirm(`${nm(m)} will evolve into ${SP[e.to].n}. The ${e.n-1} selected Mortys will be gone for good. Continue?`))return;
+let from=nm(m);G.mons=rest;G.box=G.box.filter(x=>!EVX.has(x));
+m.s=e.to;m.hp=st(m,0);m.sx=null;m.ps=null;m.ap={};m.eq=null;
+EVS=0;EVC=null;EVX=new Set();SEL=-1;N=`${from} evolved into ${nm(m)}!`;save();R()}
+const evui=()=>{let all=EV_ALL(),e=EVC&&EVO[EVC.s],need=e?e.n-1:0,
+bar=`<div class="evbar"><div><button class=s onclick="evb()">Back</button><button onclick="evo(1)">Evolve Mortys</button></div>${e?`<button class="evc" onclick="evgo()"${EVX.size==need?"":" disabled"}>Evolve into<br>${SP[e.to].n} (${EVX.size}/${need})</button>`:""}</div>`+(N?`<div class=c>${N}</div>`:"");
+if(!EVC){let c=EV_CAN();return bar+`<div class=c><b>Evolve Mortys</b><br><small>These Mortys can evolve. Choose the one that will evolve: it keeps its level, XP and IVs, and the other Mortys needed for the evolution are used up.</small></div>`+(c.length?c.map(m=>{let n=all.filter(x=>x.s==m.s).length,e=EVO[m.s];return evcard(m,`<small>Evolves into ${SP[e.to].n}. Needs ${e.n} × ${nm(m)} (you have ${n}).</small><br><button onclick="evpick(${all.indexOf(m)})"${n>=e.n?"":" disabled"}>Evolve this Morty</button>`)}).join(""):`<div class=c>None of your Mortys can evolve.<br><small>${Object.keys(EVO).map(k=>`${EVO[k].n} × ${SP[k].n} → ${SP[EVO[k].to].n}`).join("<br>")}</small></div>`)}
+let opts=all.filter(m=>m!=EVC&&m.s==EVC.s);
+return bar+`<div class=c><b>${nm(EVC)} → ${SP[e.to].n}</b><br><small>Choose ${need} more ${nm(EVC)}${need>1?"s":""} to use up. The evolved Morty keeps the level, XP and IVs of the Morty below. Selected ${EVX.size} of ${need}.</small></div>`+evcard(EVC,"")+`<div class=c><b>Mortys to use up</b></div>`+opts.map(m=>evcard(m,`<button class="${EVX.has(m)?"":"s"}" onclick="evtog(${all.indexOf(m)})">${EVX.has(m)?"Selected (tap to undo)":"Use up this Morty"}</button>`)).join("")};
+const view=s=>{if(s=="menu"&&DVB){DVB=0;DEV=1;DVM=0}if(s=="decks"){DKS=-1;DKE=-1;DKP=-1;DKM="Select a deck.";DKF=1}EVH=0;EVS=0;EVC=null;EVX=new Set();if(s=="lab"){LBP=0;LBS=-1}if(s=="heal"){HPH=0;HB=0}S=s;N="";SEL=-1;SH=null;SM="";LN=null;R()};
+let POS=null,SPN=null,SH=null,SM="",LN=null,SB=0;
+const SI={chip:'<img alt="" src="grafiki/shop/chip.webp">',potion:'<img alt="" src="grafiki/shop/potion.webp">',great:'<img alt="" src="grafiki/shop/great.webp">',sens:'<img alt="" src="grafiki/shop/sens.webp">',pure:'<img alt="" src="grafiki/shop/pure.webp">',seed:'<img alt="" src="grafiki/shop/seed.webp">'};
+const COIN='<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#b6d629" stroke="#5c7a10" stroke-width="2"/><text x="12" y="15.5" font-size="8" font-weight="700" fill="#2d3d05" text-anchor="middle">SHM</text></svg>';
+function pick(k){SH=SH==k?null:k;SM="";R()}
+function fl(){let b=document.querySelector(".buyb");if(b){b.classList.add("fl");setTimeout(()=>b.classList.remove("fl"),100)}}
+function buyit(){let x=SHOP.find(y=>y.k==SH);if(!x)return;if(G.c<x.p){SM="Not enough Flurbos.";R();return fl()}G.c-=x.p;G.it[x.k]++;SM=`You bought ${x.n}. You now have ${G.it[x.k]}.`;save();R();fl()}
+const TT={w:1774,h:887,x:601,y:473,bw:577,bh:161,src:"grafiki/screens/TT.webp"};
+const SF={w:2378,h:1080,i:[744,800,262,136],c:[1014,800,408,136],x:[1400,803,253,133],src:"grafiki/screens/SF.webp"};
+let SFB=0;function sfgo(id,v){if(SFB)return;SFB=1;let b=document.getElementById(id);if(b)b.classList.add("fl");setTimeout(()=>{SFB=0;view(v)},120)}
+function shopfront(){document.getElementById("a").innerHTML=`<div class="ttl"><img alt="Rick behind the shop counter" src="${SF.src}"><button id="sf1" class="hbtn sfg" onclick="sfgo('sf1','shop')" aria-label="Items"><span>Items</span></button><button id="sf2" class="hbtn sfb" onclick="sfgo('sf2','avatars')" aria-label="Customize"><span>Customize</span></button><button id="sf3" class="sbtn" onclick="sfgo('sf3','menu')" aria-label="Leave the shop"><svg viewBox="1059.6 607.5 191.7 101.0" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="sfrg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fe0679"/><stop offset="1" stop-color="#fc0204"/></linearGradient></defs><path d="M1074.2 640.5 Q1059.6 607.5 1095.7 607.5 L1215.3 607.5 Q1251.4 607.5 1236.8 640.5 L1213.1 694.5 Q1206.9 708.5 1191.6 708.5 L1119.4 708.5 Q1104.1 708.5 1097.9 694.5Z" fill="#000"/><path d="M1080.6 637.6 Q1070.4 614.5 1095.7 614.5 L1215.3 614.5 Q1240.6 614.5 1230.4 637.6 L1206.7 691.6 Q1202.3 701.5 1191.6 701.5 L1119.4 701.5 Q1108.7 701.5 1104.3 691.6Z" fill="#fff"/><path d="M1082.8 636.6 Q1074.2 617.0 1095.7 617.0 L1215.3 617.0 Q1236.8 617.0 1228.2 636.6 L1204.4 690.6 Q1200.7 699.0 1191.6 699.0 L1119.4 699.0 Q1110.3 699.0 1106.6 690.6Z" fill="url(#sfrg)"/><path d="M1126 638H1188L1157 680Z" transform="translate(3.5 4)" fill="#96001e" stroke="#96001e" stroke-width="8" stroke-linejoin="round"/><path d="M1126 638H1188L1157 680Z" fill="#000" stroke="#000" stroke-width="8" stroke-linejoin="round"/></svg></button></div>`;sfpos()}
+function FIT(){let e=document.querySelector(".ttl"),r=e?e.getBoundingClientRect():{width:innerWidth,height:innerHeight};return[r.width,r.height]}
+function sfpos(){if(S!="shopfront")return;let[vw,vh]=FIT(),k=Math.min(vw/SF.w,vh/SF.h),ox=(vw-SF.w*k)/2,oy=(vh-SF.h*k)/2;[["sf1",SF.i],["sf2",SF.c],["sf3",SF.x]].forEach(([id,r])=>{let b=document.getElementById(id);if(!b)return;let q=b.style;q.left=ox+r[0]*k+"px";q.top=oy+r[1]*k+"px";q.width=r[2]*k+"px";q.height=r[3]*k+"px";q.setProperty("--k",k)})}
+addEventListener("resize",sfpos);
+/* ===== STORAGE HUB (map > Storage): Rick's lab picture. Buttons: Storage (team + storage), Combine (evolve list), red arrow (back to the map). Positions are in picture pixels like SF. ===== */
+const STH={w:2378,h:1080,s:[705,800,350,136],c:[1063,800,380,136],x:[1421,803,253,133],src:"grafiki/screens/STH.webp"};
+function sthgo(id,v){if(SFB)return;SFB=1;let b=document.getElementById(id);if(b)b.classList.add("fl");setTimeout(()=>{SFB=0;if(v=="combine"){view("storage");evo(1);EVH=1}else view(v)},120)}
+function stohub(){document.getElementById("a").innerHTML=`<div class="ttl"><img alt="Rick in the Morty lab" src="${STH.src}"><button id="st1" class="hbtn sfb" onclick="sthgo('st1','decks')" aria-label="Storage"><span>Storage</span></button><button id="st2" class="hbtn sfy" onclick="sthgo('st2','combine')" aria-label="Combine"><span>Combine</span></button><button id="st3" class="sbtn" onclick="sthgo('st3','menu')" aria-label="Back to the map"><svg viewBox="1059.6 607.5 191.7 101.0" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="sfrg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fe0679"/><stop offset="1" stop-color="#fc0204"/></linearGradient></defs><path d="M1074.2 640.5 Q1059.6 607.5 1095.7 607.5 L1215.3 607.5 Q1251.4 607.5 1236.8 640.5 L1213.1 694.5 Q1206.9 708.5 1191.6 708.5 L1119.4 708.5 Q1104.1 708.5 1097.9 694.5Z" fill="#000"/><path d="M1080.6 637.6 Q1070.4 614.5 1095.7 614.5 L1215.3 614.5 Q1240.6 614.5 1230.4 637.6 L1206.7 691.6 Q1202.3 701.5 1191.6 701.5 L1119.4 701.5 Q1108.7 701.5 1104.3 691.6Z" fill="#fff"/><path d="M1082.8 636.6 Q1074.2 617.0 1095.7 617.0 L1215.3 617.0 Q1236.8 617.0 1228.2 636.6 L1204.4 690.6 Q1200.7 699.0 1191.6 699.0 L1119.4 699.0 Q1110.3 699.0 1106.6 690.6Z" fill="url(#sfrg)"/><path d="M1126 638H1188L1157 680Z" transform="translate(3.5 4)" fill="#96001e" stroke="#96001e" stroke-width="8" stroke-linejoin="round"/><path d="M1126 638H1188L1157 680Z" fill="#000" stroke="#000" stroke-width="8" stroke-linejoin="round"/></svg></button></div>`;sthpos()}
+function sthpos(){if(S!="stohub")return;let[vw,vh]=FIT(),k=Math.min(vw/STH.w,vh/STH.h),ox=(vw-STH.w*k)/2,oy=(vh-STH.h*k)/2;[["st1",STH.s],["st2",STH.c],["st3",STH.x]].forEach(([id,r])=>{let b=document.getElementById(id);if(!b)return;let q=b.style;q.left=ox+r[0]*k+"px";q.top=oy+r[1]*k+"px";q.width=r[2]*k+"px";q.height=r[3]*k+"px";q.setProperty("--k",k)})}
+addEventListener("resize",sthpos);
+/* ===== DECKS (map > Storage > Storage): 9 saved teams A-I, 5 slots each. A deck stores Morty ids (m.id); the same Morty may be in several decks. Withdraw = the deck becomes the active team (the Mortys that are not in it go to storage). Edit = choose the Mortys from the whole collection. ===== */
+/* Head icons: put the new head pictures here as species number -> image (data URI or path). Species without an entry use their normal icon. */
+const HEAD={0:"grafiki/heads/head_00_morty.webp",1:"grafiki/heads/head_01_dethklok_fan_morty.webp",2:"grafiki/heads/head_02_chimney_sweep_morty.webp",3:"grafiki/heads/head_03_pizza_delivery_morty.webp",4:"grafiki/heads/head_04_dragon_rider_morty.webp",5:"grafiki/heads/head_05_flannel_morty.webp",6:"grafiki/heads/head_06_goomby_morty.webp",7:"grafiki/heads/head_07_crow_morty.webp",8:"grafiki/heads/head_08_soldier_morty.webp",9:"grafiki/heads/head_09_archmage_morty.webp",10:"grafiki/heads/head_10_gotron_morty.webp",11:"grafiki/heads/head_11_birding_man_morty.webp",12:"grafiki/heads/head_12_box_morty.webp",13:"grafiki/heads/head_13_robot_chicken_morty.webp",14:"grafiki/heads/head_14_jetpack_morty.webp",15:"grafiki/heads/head_15_sos_morty.webp",16:"grafiki/heads/head_16_evil_morty.webp",17:"grafiki/heads/head_17_hell_demon_morty.webp",18:"grafiki/heads/head_18_forbidden_morty.webp",19:"grafiki/heads/head_19_wine_boy_morty.webp",20:"grafiki/heads/head_20_ventriloquiver_morty.webp",21:"grafiki/heads/head_21_wasp_morty.webp",22:"grafiki/heads/head_22_squid_morty.webp",23:"grafiki/heads/head_23_hockey_stick_morty.webp",24:"grafiki/heads/head_24_rabbit_morty.webp",25:"grafiki/heads/head_25_evil_rabbit_morty.webp",26:"grafiki/heads/head_26_gardener_morty.webp",27:"grafiki/heads/head_27_hockey_morteh.webp",28:"grafiki/heads/head_28_slick_morty.webp",29:"grafiki/heads/head_29_scaly_morty.webp",30:"grafiki/heads/head_30_specs_morty.webp",31:"grafiki/heads/head_31_left_handed_morty.webp",32:"grafiki/heads/head_32_cop_morty.webp",33:"grafiki/heads/head_33_nargles_morty.webp",34:"grafiki/heads/head_34_boob_world_morty.webp",35:"grafiki/heads/head_35_snake_morty.webp",36:"grafiki/heads/head_36_season_four_morty.webp",37:"grafiki/heads/head_37_shrimp_morty.webp",38:"grafiki/heads/head_38_turkey_soldier_morty.webp",39:"grafiki/heads/head_39_forty_morty.webp"};
+const DKN=9,DKL="ABCDEFGHI";
+let DKS=-1,DKE=-1,DKP=-1,DKM="Select a deck.",DKY=0,DKB=0,DKF=0;
+const dkg=id=>document.getElementById(id);
+function ids(){let a=G.mons.concat(G.box),u=new Set(),n=Math.max(G.nid||1,1+Math.max(0,...a.map(m=>m.id||0)));a.forEach(m=>{if(!m.id||u.has(m.id))m.id=n++;u.add(m.id)});G.nid=n}
+const dkm=x=>x?G.mons.concat(G.box).find(m=>m.id==x):null;
+const dkr=i=>G.dk[i].map(dkm).filter(Boolean);
+function dkactive(){return G.ad|0}
+function dkinit(){ids();if(!Array.isArray(G.dk))G.dk=[];G.dk=Array.from({length:DKN},(_,i)=>{let r=(G.dk[i]||[]).slice(0,5).map(x=>dkm(x)?x:null);while(r.length<5)r.push(null);return r});
+if(!(G.ad>=0&&G.ad<DKN))G.ad=0;let t=G.mons.slice(0,5).map(m=>m.id);while(t.length<5)t.push(null);G.dk[G.ad]=t;save()}
+function dkapply(){let r=dkr(G.ad);if(!r.length)return;let all=G.mons.concat(G.box);G.mons=r;G.box=all.filter(m=>!r.includes(m))}
+function dkchg(){if(DKE==G.ad)dkapply();save()}
+const dkcnt=()=>G.dk[DKE].filter(Boolean).length,dkmin=()=>DKE==G.ad&&dkcnt()<2;
+const dkpic=m=>{let h=HEAD[m.s]||SP[m.s].img;return h?`<img class="dh" alt="" src="${h}">`:`<span class="dem">${SP[m.s].e||"?"}</span>`};
+/* Type icons (rock, paper, scissors): the originals are tiny pixel art, so they are enlarged here with a smooth pixel-art algorithm. To use sharper pictures, replace the three images in DKTI. DKTW = width in px on the deck screen. */
+const DKTI={rock:"grafiki/ui/deck_rock.webp",paper:"grafiki/ui/deck_paper.webp",scissors:"grafiki/ui/deck_scissors.webp"},DKTW={rock:66,paper:66,scissors:65};
+const dkty=m=>{let t=SP[m.s].ty,s=DKTI[t];return s?`<img class="dty" alt="" src="${s}" style="width:${DKTW[t]}px">`:""};
+const dks=(m,out,cls,at,ex)=>m?`<div class="dsl f ${cls||""}" ${at||""}>${dkpic(m)}${dkty(m)}<div class="dlv"><i>LVL</i><u>${m.l}</u></div>${out?'<span class="dout">Out</span>':""}${ex||""}</div>`:`<div class="dsl e ${cls||""}" ${at||""}></div>`;
+const dkrow=(i,sel,act,slots,at)=>`<div class="dr${sel?" sel":""}" ${at||""}><div class="dtab"><small>Deck</small><b>${DKL[i]}</b></div><div class="dcard">${slots}</div>${act?'<div class="dact"><span>Active</span></div>':""}</div>`;
+const DKRED=`<svg viewBox="1059.6 607.5 191.7 101.0" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="dkrg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fe0679"/><stop offset="1" stop-color="#fc0204"/></linearGradient></defs><path d="M1074.2 640.5 Q1059.6 607.5 1095.7 607.5 L1215.3 607.5 Q1251.4 607.5 1236.8 640.5 L1213.1 694.5 Q1206.9 708.5 1191.6 708.5 L1119.4 708.5 Q1104.1 708.5 1097.9 694.5Z" fill="#000"/><path d="M1080.6 637.6 Q1070.4 614.5 1095.7 614.5 L1215.3 614.5 Q1240.6 614.5 1230.4 637.6 L1206.7 691.6 Q1202.3 701.5 1191.6 701.5 L1119.4 701.5 Q1108.7 701.5 1104.3 691.6Z" fill="#fff"/><path d="M1082.8 636.6 Q1074.2 617.0 1095.7 617.0 L1215.3 617.0 Q1236.8 617.0 1228.2 636.6 L1204.4 690.6 Q1200.7 699.0 1191.6 699.0 L1119.4 699.0 Q1110.3 699.0 1106.6 690.6Z" fill="url(#dkrg)"/><path d="M1126 638H1188L1157 680Z" transform="translate(3.5 4)" fill="#96001e" stroke="#96001e" stroke-width="8" stroke-linejoin="round"/><path d="M1126 638H1188L1157 680Z" fill="#000" stroke="#000" stroke-width="8" stroke-linejoin="round"/></svg>`;
+function dkdraw(){let l=dkg("dklist"),c=dkg("dkcol"),y=l?l.scrollTop:DKY,y2=c?c.scrollTop:0;dkscr();let l2=dkg("dklist"),c2=dkg("dkcol");if(l2)l2.scrollTop=y;if(c2)c2.scrollTop=y2;dkfit()}
+function deckscr(){dkinit();if(DKF){DKF=0;DKS=G.ad;DKM="This deck is already in your party.";DKY=G.ad*248}dkdraw()}
+function dkscr(){let ed=DKE>=0,act=dkactive(),body,btn;
+if(!ed){body=`<div id="dklist" onscroll="dkthumb()">`+G.dk.map((d,i)=>dkrow(i,i==DKS,i==act,d.map(x=>dks(dkm(x),i==act)).join(""),`onclick="dkpick(${i})"`)).join("")+`</div><div id="dksb" style="top:50px;height:820px"><div id="dkth"></div></div>`;
+let off=DKS<0||DKS==act||!dkr(DKS).length;
+btn=`<button data-go="1" id="dkbw" class="dhb dg"${off?" data-off":""} style="left:705px;top:800px;width:400px;height:136px" onclick="dkgo('dkbw',dkw)"><span>Withdraw</span></button><button data-go="1" id="dkbe" class="dhb dy"${DKS<0?" data-off":""} style="left:1113px;top:800px;width:330px;height:136px" onclick="dkgo('dkbe',dke)"><span>Edit</span></button><button data-go="1" id="dkbx" class="drb" style="left:1421px;top:803px;width:253px;height:133px" aria-label="Back" onclick="dkgo('dkbx',dkx)">${DKRED}</button>`}
+else{let d=G.dk[DKE],all=G.mons.concat(G.box).slice().sort((a,b)=>b.l-a.l||a.s-b.s);
+body=`<div id="dkerow">`+dkrow(DKE,1,DKE==act,d.map((x,j)=>dks(dkm(x),0,j==DKP?"dp":"",`onclick="dkslt(${j})"`)).join(""))+`</div><div id="dkcol" onscroll="dkthumb()"><div id="dkgrid">`+all.map(m=>{let k=d.indexOf(m.id);return dks(m,0,"t"+(k>=0?" in":""),`onclick="dkadd(${m.id})"`,k>=0?`<span class="dnum">${k+1}</span>`:"")}).join("")+`</div></div><div id="dksb" style="top:300px;height:570px"><div id="dkth"></div></div>`;
+btn=`<button data-go="1" id="dkbw" class="dhb dg" style="left:705px;top:800px;width:400px;height:136px" onclick="dkgo('dkbw',dkdone)"><span>Done</span></button><button data-go="1" id="dkbe" class="dhb dy" style="left:1113px;top:800px;width:330px;height:136px" onclick="dkgo('dkbe',dkclr)"><span>Clear</span></button><button data-go="1" id="dkbx" class="drb" style="left:1421px;top:803px;width:253px;height:133px" aria-label="Back" onclick="dkgo('dkbx',dkdone)">${DKRED}</button>`}
+dkg("a").innerHTML=`<div id="dk"><div id="dkin"><div id="dkbg"></div>${body}${btn}<div id="dkmsg">${DKM}</div></div></div>`}
+function dkfit(){let w=dkg("dk"),e=dkg("dkin");if(!w||!e)return;let W=w.clientWidth,H=w.clientHeight,k=Math.min(W/2378,H/1080);e.style.transform=`translate(${(W-2378*k)/2}px,${(H-1080*k)/2}px) scale(${k})`;dkthumb()}
+function dkthumb(){let l=dkg(DKE>=0?"dkcol":"dklist"),sb=dkg("dksb"),t=dkg("dkth");if(!l||!sb||!t)return;let h=l.clientHeight,tt=l.scrollHeight,tr=sb.clientHeight-6,th=Math.max(60,tr*h/tt),mx=tt-h;t.style.height=th-6+"px";t.style.top=(mx>0?(tr-th)*l.scrollTop/mx:0)+"px"}
+addEventListener("resize",dkfit);
+function dkgo(id,f){if(DKB)return;let b=dkg(id);if(b&&b.hasAttribute("data-off"))return;DKB=1;if(b)b.classList.add("fl");setTimeout(()=>{DKB=0;if(S=="decks")f()},120)}
+function dkpick(i){DKS=i;let a=dkactive();DKM=i==a?"This deck is already in your party.":dkr(i).length?"What would you like to do?":"This deck is empty. Tap Edit to add Mortys.";dkdraw()}
+function dkw(){let i=DKS;if(i<0||i==dkactive())return;if(!dkr(i).length)return;G.ad=i;dkapply();DKM="Your party is now using this deck.";save();dkdraw()}
+function dke(){if(DKS<0)return;let l=dkg("dklist");DKY=l?l.scrollTop:0;DKE=DKS;DKP=-1;DKM=`Deck ${DKL[DKE]}: tap a Morty to add it.`;dkdraw()}
+function dkx(){view("stohub")}
+function dkdone(){let d=G.dk[DKE].filter(Boolean);while(d.length<5)d.push(null);G.dk[DKE]=d;DKE=-1;DKP=-1;save();dkpick(DKS)}
+function dkclr(){if(DKE==G.ad){DKP=-1;DKM="Your active deck needs at least one Morty.";return dkdraw()}G.dk[DKE]=[null,null,null,null,null];DKP=-1;DKM=`Deck ${DKL[DKE]} cleared. Tap a Morty to add it.`;save();dkdraw()}
+function dkslt(j){let d=G.dk[DKE];if(DKP==j&&d[j]){if(dkmin()){DKP=-1;DKM="Your active deck needs at least one Morty.";return dkdraw()}d[j]=null;DKP=-1;DKM=`Slot ${j+1} is now empty.`;dkchg()}else{DKP=j;DKM=d[j]?`Slot ${j+1} selected. Tap a Morty to replace it, or tap the slot again to empty it.`:`Slot ${j+1} selected. Tap a Morty to put it here.`}dkdraw()}
+function dkadd(id){let d=G.dk[DKE],k=d.indexOf(id);
+if(k>=0){if(DKP>=0&&DKP!=k){let t=d[DKP];d[DKP]=id;d[k]=t;DKP=-1;DKM="Moved."}else{if(dkmin()){DKP=-1;DKM="Your active deck needs at least one Morty.";return dkdraw()}d[k]=null;DKP=-1;DKM="Removed from the deck."}}
+else{let t=DKP>=0?DKP:d.indexOf(null);if(t<0){DKM="The deck is full. Tap a slot to replace it, or tap a Morty in the deck to remove it.";return dkdraw()}d[t]=id;DKP=-1;DKM="Added to the deck."}
+dkchg();dkdraw()}
+
+const HL={w:1893,h:1080,w2:1888,h2:1080,a:"grafiki/screens/HL_a.webp",b:"grafiki/screens/HL_b.webp",h_:[609,761,368,178],x:[991,761,204,179],d:[684,761,520,178]};
+let HPH=0,HB=0;
+// Healing center screen: HPH 0 = question (Heal / back arrow), 3 = white flash (0.5 s), 2 = "Done!" picture with the Done button
+function healscr(){let two=HPH==2;document.getElementById("a").innerHTML=`<div class="ttl"><img alt="Healing center" src="${two?HL.b:HL.a}">`+(HPH==3?`<div class="hflash"></div>`:two?`<button id="hd" class="hbtn hg" onclick="hdone()"><span>Done</span></button>`:`<button id="hh" class="hbtn hg" onclick="hgo()" aria-label="Heal"><span>Heal</span></button><button id="hx" class="hbtn hr" onclick="hback()" aria-label="Back to the map"><svg viewBox="0 0 90 66" aria-hidden="true"><path d="M10 10 H80 L45 54Z" fill="#000" stroke="#000" stroke-width="10" stroke-linejoin="round"/></svg></button>`)+`</div>`;hpos()}
+function hpos(){if(S!="heal")return;let two=HPH==2,W=two?HL.w2:HL.w,H=two?HL.h2:HL.h,[vw,vh]=FIT(),k=Math.min(vw/W,vh/H),ox=(vw-W*k)/2,oy=(vh-H*k)/2;[["hh",HL.h_],["hx",HL.x],["hd",HL.d]].forEach(([id,r])=>{let b=document.getElementById(id);if(!b)return;let q=b.style;q.left=ox+r[0]*k+"px";q.top=oy+r[1]*k+"px";q.width=r[2]*k+"px";q.height=r[3]*k+"px";q.setProperty("--k",k);if(id=="hd")q.fontSize=r[3]*k*.5+"px"})}
+addEventListener("resize",hpos);
+function hfl(id,f){let b=document.getElementById(id);if(b)b.classList.add("fl");setTimeout(f,120)}
+function hgo(){if(HB)return;HB=1;hfl("hh",()=>{G.sk=0;G.mons.concat(G.box).forEach(m=>{m.hp=st(m,0);m.sx=null;m.ps=null;m.ap={}});save();HPH=3;R();setTimeout(()=>{HPH=2;HB=0;R()},500)})}
+function hback(){if(HB)return;HB=1;hfl("hx",()=>{HB=0;view("menu")})}
+function hdone(){if(HB)return;HB=1;hfl("hd",()=>{HB=0;view("menu")})}
+const LB={w:1860,h:845,a:"grafiki/screens/LB_a.webp",s:[620,620,444,116],x:[1034,620,190,116]};
+let LBP=0,LBS=-1,LBB=0;
+// Morty Lab: LBP 0 = lab picture (Select a Morty / back arrow), 1 = choose a Morty from the team, 2 = move set of the chosen Morty
+function lbgo(id,f){if(LBB)return;LBB=1;let b=document.getElementById(id);if(b)b.classList.add("fl");setTimeout(()=>{LBB=0;f()},120)}
+function labscr(){document.getElementById("a").innerHTML=`<div class="ttl"><img alt="Morty Lab" src="${LB.a}"><button id="lb1" class="sbtn lbb" onclick="lbgo('lb1',()=>{LBP=1;R()})" aria-label="Select a Morty"><svg viewBox="620 620 444 116" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="lbgG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#30fb34"/><stop offset="1" stop-color="#19f615"/></linearGradient></defs><path d="M623.5 633.0Q620 639 620.5 646.5Q621 654 633.5 684.0Q646 714 652.5 720.5Q659 727 664.0 729.5Q669 732 675.0 733.5Q681 735 862.0 735.0Q1043 735 1048.5 733.0Q1054 731 1057.0 728.0Q1060 725 1061.5 721.5Q1063 718 1063.0 711.0Q1063 704 1050.0 671.5Q1037 639 1030.5 633.0Q1024 627 1015.5 624.0Q1007 621 824.0 621.0Q641 621 634.0 624.0Q627 627 623.5 633.0Z" fill="#000"/><path d="M631.0 637.5Q629 641 629.0 645.0Q629 649 633.5 659.0Q638 669 638.0 670.0Q638 671 639.0 672.5Q640 674 640.0 675.0Q640 676 641.0 677.5Q642 679 642.0 680.0Q642 681 643.0 682.5Q644 684 644.0 685.0Q644 686 645.0 687.5Q646 689 649.5 698.5Q653 708 654.5 710.0Q656 712 660.5 716.0Q665 720 669.0 722.0Q673 724 676.5 724.5Q680 725 680.5 725.5Q681 726 862.0 726.0Q1043 726 1045.5 725.0Q1048 724 1050.5 721.5Q1053 719 1053.5 717.5Q1054 716 1054.0 711.0Q1054 706 1052.5 703.0Q1051 700 1047.5 689.5Q1044 679 1043.0 677.5Q1042 676 1040.5 671.0Q1039 666 1034.5 655.5Q1030 645 1024.0 639.5Q1018 634 1012.5 632.0Q1007 630 824.0 630.0Q641 630 637.0 632.0Q633 634 631.0 637.5Z" fill="#fff"/><path d="M638.5 638.0Q635 641 635.0 645.0Q635 649 639.5 659.0Q644 669 650.5 686.5Q657 704 658.0 705.5Q659 707 664.0 711.5Q669 716 672.0 717.5Q675 719 678.5 719.5Q682 720 682.5 720.5Q683 721 862.0 721.0Q1041 721 1042.5 720.5Q1044 720 1046.5 717.5Q1049 715 1048.5 710.0Q1048 705 1047.0 703.5Q1046 702 1045.5 699.5Q1045 697 1044.0 695.5Q1043 694 1039.0 682.5Q1035 671 1033.5 668.5Q1032 666 1029.5 658.5Q1027 651 1022.0 645.5Q1017 640 1011.0 637.5Q1005 635 823.5 635.0Q642 635 638.5 638.0Z" fill="url(#lbgG)"/><text x="681" y="696" font-family="Fredoka,system-ui,sans-serif" font-weight="600" font-size="47" textLength="330" lengthAdjust="spacingAndGlyphs" fill="rgba(0,120,0,.55)" transform="translate(3 4)">Select a Morty</text><text x="678" y="696" font-family="Fredoka,system-ui,sans-serif" font-weight="600" font-size="47" textLength="330" lengthAdjust="spacingAndGlyphs" fill="#050505">Select a Morty</text></svg></button><button id="lb2" class="sbtn lbb" onclick="lbgo('lb2',()=>view('menu'))" aria-label="Back to the map"><svg viewBox="1034 620 190 116" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="lbgR" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fe0679"/><stop offset="1" stop-color="#fc0204"/></linearGradient></defs><path d="M1037.0 634.5Q1035 639 1035.5 647.0Q1036 655 1048.5 684.5Q1061 714 1067.5 720.5Q1074 727 1079.0 729.5Q1084 732 1089.5 733.5Q1095 735 1128.0 735.0Q1161 735 1171.0 731.5Q1181 728 1185.0 725.0Q1189 722 1193.0 717.0Q1197 712 1210.0 682.0Q1223 652 1223.0 645.5Q1223 639 1220.5 634.0Q1218 629 1216.5 627.5Q1215 626 1208.5 623.5Q1202 621 1128.5 621.0Q1055 621 1049.0 623.5Q1043 626 1041.0 628.0Q1039 630 1037.0 634.5Z" fill="#000"/><path d="M1045.0 638.5Q1044 641 1044.0 645.5Q1044 650 1046.0 654.0Q1048 658 1048.0 659.0Q1048 660 1058.0 684.0Q1068 708 1069.5 710.0Q1071 712 1075.5 716.0Q1080 720 1084.0 722.0Q1088 724 1091.5 725.0Q1095 726 1128.0 726.0Q1161 726 1168.0 723.5Q1175 721 1179.0 718.0Q1183 715 1186.5 710.5Q1190 706 1202.0 678.0Q1214 650 1214.0 645.5Q1214 641 1213.5 639.5Q1213 638 1211.0 635.5Q1209 633 1205.5 631.5Q1202 630 1128.5 630.0Q1055 630 1052.0 631.5Q1049 633 1047.5 634.5Q1046 636 1045.0 638.5Z" fill="#fff"/><path d="M1052.0 639.5Q1050 642 1050.0 645.5Q1050 649 1051.0 650.5Q1052 652 1055.0 660.5Q1058 669 1059.5 671.5Q1061 674 1064.0 682.5Q1067 691 1068.5 693.5Q1070 696 1071.0 699.5Q1072 703 1077.0 708.5Q1082 714 1088.5 717.0Q1095 720 1128.5 720.0Q1162 720 1168.5 717.0Q1175 714 1180.0 708.5Q1185 703 1186.5 698.5Q1188 694 1192.0 685.5Q1196 677 1196.0 676.0Q1196 675 1202.0 662.0Q1208 649 1208.0 645.5Q1208 642 1206.0 639.5Q1204 637 1201.5 636.0Q1199 635 1128.5 635.0Q1058 635 1056.0 636.0Q1054 637 1052.0 639.5Z" fill="url(#lbgR)"/><path d="M1093 659L1093 661L1096 663L1095 664L1099 667L1098 668L1102 671L1101 672L1105 675L1104 676L1108 679L1107 680L1111 683L1110 684L1120 695L1119 696L1122 698L1121 699L1124 703L1133 710L1137 710L1141 706L1170 667L1170 663L1166 660L1165 662L1164 661L1165 656L1163 656L1162 654L1097 654L1096 656L1094 656L1095 658Z" fill="#96001e" stroke="#96001e" stroke-width="3" stroke-linejoin="round"/><path d="M1094 659L1102 672L1127 705L1131 705L1164 662L1164 657L1162 655L1097 655Z" fill="#000" stroke="#000" stroke-width="3" stroke-linejoin="round"/></svg></button></div>`;lbpos()}
+function lbpos(){if(S!="lab"||LBP!=0)return;let[vw,vh]=FIT(),k=Math.min(vw/LB.w,vh/LB.h),ox=(vw-LB.w*k)/2,oy=(vh-LB.h*k)/2;[["lb1",LB.s],["lb2",LB.x]].forEach(([id,r])=>{let b=document.getElementById(id);if(!b)return;let H=Math.max(44,r[3]*k),q=b.style;q.left=ox+r[0]*k+"px";q.top=oy+r[1]*k+"px";q.width=r[2]*k+"px";q.height=r[3]*k+"px"})}
+addEventListener("resize",lbpos);
+function ALLPOS(){sfpos();sthpos();hpos();lbpos();spos()}["orientationchange","pageshow"].forEach(e=>addEventListener(e,()=>setTimeout(ALLPOS,60)));if(window.visualViewport)visualViewport.addEventListener("resize",ALLPOS);if(window.ResizeObserver)new ResizeObserver(ALLPOS).observe(document.documentElement);
+function lbsel(i){LBS=i;LBP=2;LN=null;R()}
+function lbpick(m,i){return`<div class="c r-${SP[m.s].r}"><div class="row"><span class="ico">${ic(m)}</span><div style="flex:1"><b>${nm(m)}</b><br>${rb(SP[m.s].r)} ${tb(SP[m.s].ty)} <small>Lv ${m.l}</small><br><small>${mvs(m).length} of 4 moves equipped</small></div></div><button onclick="lbsel(${i})">Select</button></div>`}
+function title(){document.getElementById("a").innerHTML=`<div class="ttl"><img alt="Pocket Mortys title screen" src="${TT.src}"><button id="tpl" class="tbtn" onclick="play()" aria-label="Play"><svg class="tic" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="50" fill="#ffc72b"/><circle cx="50" cy="50" r="43" fill="#ffd548" opacity=".55"/><rect x="30" y="58" width="7" height="15" rx="3.5" fill="#f6d23c" stroke="#111" stroke-width="3"/><rect x="63" y="58" width="7" height="15" rx="3.5" fill="#f6d23c" stroke="#111" stroke-width="3"/><rect x="37" y="72" width="26" height="13" rx="2" fill="#2f7fe0" stroke="#111" stroke-width="3"/><rect x="36" y="85" width="12" height="7" rx="1.5" fill="#111"/><rect x="52" y="85" width="12" height="7" rx="1.5" fill="#111"/><rect x="36" y="57" width="28" height="17" rx="4" fill="#f6d23c" stroke="#111" stroke-width="3"/><circle cx="50" cy="38" r="20" fill="#f1b48a" stroke="#111" stroke-width="3.5"/><path d="M30 37 Q29 15 50 15 Q71 15 70 37 Q61 27 50 27 Q39 27 30 37Z" fill="#8a4a2a" stroke="#111" stroke-width="3.5" stroke-linejoin="round"/><circle cx="42" cy="40" r="6.5" fill="#fff" stroke="#111" stroke-width="2.5"/><circle cx="58" cy="40" r="6.5" fill="#fff" stroke="#111" stroke-width="2.5"/><circle cx="42" cy="40.5" r="2.4" fill="#111"/><circle cx="58" cy="40.5" r="2.4" fill="#111"/><path d="M43 50 Q50 55 57 50" fill="none" stroke="#111" stroke-width="2.6" stroke-linecap="round"/></svg><span>PLAY</span></button></div>`;tpos()}
+function tpos(){let b=document.getElementById("tpl");if(!b||S!="title")return;let vw=innerWidth,vh=innerHeight,k=Math.min(vw/TT.w,vh/TT.h),q=b.style;let w=TT.bw*k,h=Math.max(44,TT.bh*k);q.left=(vw-TT.w*k)/2+TT.x*k+"px";q.top=(vh-TT.h*k)/2+TT.y*k+TT.bh*k/2-h/2+"px";q.width=w+"px";q.height=h+"px";q.setProperty("--k",k)}
+// Account screen (shown only the first time): box positions are in pixels of the original picture (w by h)
+const SU={w:1860,h:846,ix:679,iy:251,iw:505,ih:87,pr:[1357,615,272,112],rr:[1606,615,171,112],src:"grafiki/screens/SU.webp"};
+function signup(){document.getElementById("a").innerHTML=`<div class="ttl"><img alt="Create your account" src="${SU.src}"><input id="suin" class="suin" type="text" maxlength="16" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" aria-label="Username" oninput="sfix(this)" onkeydown="if(event.key=='Enter')sgo()"><div id="suerr" class="suerr" role="alert"></div><button id="suplay" class="sbtn lbb" onclick="sgo()" aria-label="Play"><svg viewBox="1357 615 272 112" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="suG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#30fb34"/><stop offset="1" stop-color="#19f615"/></linearGradient></defs><path d="M1358 633L1357 637L1358 647L1382 705L1391 716L1400 722L1410 726L1415 727L1609 727L1620 723L1626 717L1629 711L1629 696L1606 639L1602 633L1592 623L1579 617L1569 616L1568 615L1383 615L1373 617L1367 620L1362 625Z" fill="#000"/><path d="M1364 638L1365 646L1389 703L1400 714L1415 720L1609 720L1615 718L1622 710L1622 697L1599 641L1587 628L1578 624L1568 622L1383 622L1372 625L1367 630Z" fill="#fff"/><path d="M1372 636L1371 640L1376 652L1376 655L1395 699L1404 708L1415 713L1609 713L1615 708L1615 699L1593 645L1583 634L1574 630L1569 630L1568 629L1383 629L1376 631Z" fill="url(#suG)"/><text x="1446" y="689" font-family="Fredoka,system-ui,sans-serif" font-weight="600" font-size="50" textLength="99" lengthAdjust="spacingAndGlyphs" fill="rgba(0,110,0,.55)" transform="translate(3 4)">Play</text><text x="1446" y="689" font-family="Fredoka,system-ui,sans-serif" font-weight="600" font-size="50" textLength="99" lengthAdjust="spacingAndGlyphs" fill="#050505">Play</text></svg></button><button id="subk" class="sbtn lbb" onclick="sback()" aria-label="Back to start"><svg viewBox="1606 615 171 112" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="suR" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fe0679"/><stop offset="1" stop-color="#fc0204"/></linearGradient></defs><path d="M1608 627L1606 632L1606 647L1630 704L1642 718L1657 726L1662 727L1722 727L1732 724L1739 720L1749 711L1753 705L1777 647L1777 632L1773 624L1763 617L1754 615L1712 615L1711 616L1697 616L1696 615L1628 615L1623 616L1613 621Z" fill="#000"/><path d="M1613 633L1613 646L1617 653L1621 665L1625 672L1637 702L1647 713L1662 720L1722 720L1734 715L1746 703L1770 646L1770 633L1768 629L1762 624L1754 622L1712 622L1711 623L1697 623L1696 622L1628 622L1618 626Z" fill="#fff"/><path d="M1620 635L1620 644L1624 651L1643 698L1651 707L1662 713L1722 713L1730 709L1740 699L1763 644L1763 635L1762 633L1758 630L1754 629L1712 629L1711 630L1697 630L1696 629L1628 629L1622 632Z" fill="url(#suR)"/><path d="M1661 652L1662 656L1687 693L1691 697L1696 695L1717 663L1723 656L1723 650L1721 649L1664 649Z" transform="translate(4 5)" fill="#96001e" stroke="#96001e" stroke-width="2" stroke-linejoin="round"/><path d="M1661 652L1662 656L1687 693L1691 697L1696 695L1717 663L1723 656L1723 650L1721 649L1664 649Z" fill="#000" stroke="#000" stroke-width="2" stroke-linejoin="round"/></svg></button></div>`;spos()}
+function spos(){let i=document.getElementById("suin"),b=document.getElementById("suplay"),e=document.getElementById("suerr");if(!i||!b||S!="signup")return;let[vw,vh]=FIT(),k=Math.min(vw/SU.w,vh/SU.h),ox=(vw-SU.w*k)/2,oy=(vh-SU.h*k)/2,q=i.style;q.left=ox+SU.ix*k+"px";q.top=oy+SU.iy*k+"px";q.width=SU.iw*k+"px";q.height=SU.ih*k+"px";q.fontSize=SU.ih*k*.5+"px";q=e.style;q.left=ox+345*k+"px";q.top=oy+350*k+"px";q.width=1170*k+"px";q.height=60*k+"px";q.fontSize=Math.max(12,34*k)+"px";let K=document.getElementById("subk"),P=SU.pr,Q=SU.rr;q=b.style;q.left=ox+P[0]*k+"px";q.top=oy+P[1]*k+"px";q.width=P[2]*k+"px";q.height=P[3]*k+"px";q=K.style;q.left=ox+Q[0]*k+"px";q.top=oy+Q[1]*k+"px";q.width=Q[2]*k+"px";q.height=Q[3]*k+"px"}
+function sback(){S="title";R()}
+function sfix(i){let v=i.value.replace(/[^A-Za-z0-9_-]/g,"");if(v!=i.value)i.value=v;document.getElementById("suerr").textContent=""}
+function sgo(){if(SB)return;let b=document.getElementById("suplay"),i=document.getElementById("suin"),v=i.value.trim();SB=1;b.classList.add("fl");setTimeout(()=>{SB=0;b.classList.remove("fl");if(!/^[A-Za-z0-9_-]{3,16}$/.test(v)){document.getElementById("suerr").textContent="Your username needs 3 to 16 characters.";i.classList.remove("bad");void i.offsetWidth;i.classList.add("bad");i.focus();return}G.user=v;S="menu";POS=null;N="";if(G.mons.length){save();R()}else begin()},100)}
+let RS=0;
+function opts(){RS=0;S="settings";R()}
+function settings(){let h=`<button class=s onclick="leave()">Back</button><img src="grafiki/ui/dv_settings.webp" alt="Settings" style="width:100%;display:block;margin:8px 0">`;
+if(RS==2)h+=`<div class=c><b>Your data has been deleted successfully.</b><br><small>When you go back, you will create a new account.</small></div>`;
+else{h+=`<div class=c><b>Account</b><br><small>${G.user||"Player"}</small></div>`;
+h+=RS==1?`<div class=c><b>Reset progress?</b><br><small>This deletes your Mortys, items, levels and account. It cannot be undone.</small></div><button class="danger" onclick="doreset()">Yes, delete everything</button><button class=s onclick="RS=0;R()">Cancel</button>`:`<button class="danger" onclick="RS=1;R()">Reset progress</button>`}
+document.getElementById("a").innerHTML=h}
+/* ===== MORTYS & ATTACKS (device panel button). One screen with two tabs: every Morty with all its moves (level learned + description) and every move with the Mortys that learn it. Built from SP, MV, DIM and ROAM, so new Mortys and moves show up here automatically. ===== */
+let MB={tab:"M",q:"",r:"",t:"",d:"",c:"",lv:100};
+const mbCap=r=>r[0].toUpperCase()+r.slice(1);
+const mbTog="var e=this.nextElementSibling;e.style.display=e.style.display=='block'?'none':'block'";
+function mbF(k,v){MB[k]=v;mba()}
+function mbTab(t){MB.tab=t;MB.r=MB.t=MB.d=MB.c="";mba()}
+function mbQ(v){MB.q=v;mbL()}
+function mbLv(v){MB.lv=+v;document.getElementById("mblv").textContent=v;mbL()}
+function mbDim(i){let roam=ROAM.map(x=>x.id),l=DIM.filter(d=>d[1].includes(i)||roam.includes(i)).map(d=>d[0]);return!l.length?"Doesn’t spawn in the wild":l.length==DIM.length?"All dimensions":l.join(", ")}
+function mbMv(n,lvl,extra){let c=mcat(n);return`<div class="alr mc-${c}"><button class="mvx mc-${c}" style="display:block;width:100%;text-align:left;margin:4px 0 0" onclick="${mbTog}">${lvl!=null?`<small>Lv ${lvl}</small> `:""}${mlab(n)}</button><div class="c mdx" style="display:none">${mdesc(n)}${extra||""}</div></div>`}
+function mbMorty(i){const m=SP[i],L=MB.lv,v=ST.map((n,j)=>st({s:i},j,L,16)),avg=Math.round(v.reduce((x,y)=>x+y,0)/v.length),srt=m.ls.slice().sort((a,b)=>a[0]-b[0]);
+let from=Object.keys(EVO).find(k=>EVO[k].to==i),ev=EVO[i]?`<small>Evolves: ${EVO[i].n} × ${m.n} → ${SP[EVO[i].to].n} (in Storage)</small>`:"";
+if(from!=null)ev+=`<small>Evolves from: ${EVO[from].n} × ${SP[from].n}</small>`;
+return`<div class="c r-${m.r}"><div class="row" style="cursor:pointer" onclick="${mbTog}"><span class="ico">${ic({s:i})}</span><div style="flex:1"><b>${m.n}</b><br>${rb(m.r)} ${tb(m.ty)}<br><small>Lv ${L}: ${ST.map((n,j)=>n+" "+v[j]).join(" · ")} (${avg})</small></div></div><div class="mbd" style="display:none"><small>Dimensions: ${mbDim(i)}</small>${ev}<div style="margin-top:4px"><b>Moves (${srt.length})</b></div>${srt.map(([l,n])=>mbMv(n,l)).join("")}<small>When every move is out of AP, the Morty uses Squirm.</small></div></div>`}
+function mbL(){const q=MB.q.trim().toLowerCase();let h="",cnt="";
+if(MB.tab=="M"){const roam=ROAM.map(x=>x.id);
+let ids=SP.map((m,i)=>i).filter(i=>{const m=SP[i];if(q&&!m.n.toLowerCase().includes(q)&&!m.ls.some(x=>x[1].toLowerCase().includes(q)))return false;if(MB.r&&m.r!=MB.r)return false;if(MB.t&&(MB.t=="none"?TY[m.ty]:m.ty!=MB.t))return false;if(MB.d!==""){const d=DIM[+MB.d];if(!d[1].includes(i)&&!roam.includes(i))return false}return true});
+cnt=`${ids.length} of ${SP.length} Mortys`+(q?" (search also matches move names)":"");h=ids.map(mbMorty).join("")}
+else{const CN={dmg:"Attacks",buff:"Buffs",debuff:"Debuffs",cus:"Special moves"},names=Object.keys(MV).filter(n=>n!="Squirm Recoil"),W={};
+SP.forEach((m,i)=>m.ls.forEach(([l,n])=>{(W[n]=W[n]||[]).push(m.n+" (Lv "+l+")")}));let tot=0;
+["dmg","buff","debuff","cus"].forEach(c=>{if(MB.c&&MB.c!=c)return;let l=names.filter(n=>mcat(n)==c&&(!q||n.toLowerCase().includes(q))&&(!MB.t||MV[n].t==MB.t)).sort((a,b)=>a.localeCompare(b));if(!l.length)return;tot+=l.length;
+h+=`<div><div class=c><b>${CN[c]}</b><br><small>${l.length} moves</small></div>`+l.map(n=>mbMv(n,null,`<br><small>${W[n]?"Learned by: "+W[n].join(", "):"No Morty learns this move."}</small>`)).join("")+"</div>"});
+cnt=`${tot} of ${names.length} moves`}
+document.getElementById("mbl").innerHTML=h||`<div class=c><small>Nothing found.</small></div>`;document.getElementById("mbc").textContent=cnt}
+function mba(){const M=MB.tab=="M",ch=(k,v,l)=>`<button class="mbf${MB[k]===v?" on":""}" onclick="mbF('${k}','${v}')">${l}</button>`;
+let h=`<button class=s onclick="view('menu')">Back</button><h1>Mortys &amp; Attacks</h1><div class="mbt"><button class="s${M?" on":""}" onclick="mbTab('M')">Mortys</button><button class="s${M?"":" on"}" onclick="mbTab('A')">Attacks</button></div>`;
+h+=`<input class="sq" type="search" placeholder="${M?"Search by Morty or move":"Search by move"}" autocomplete="off" value="${MB.q.replace(/"/g,"&quot;")}" oninput="mbQ(this.value)">`;
+if(M)h+=`<div>${ch("r","","All")}${RAR.map(r=>ch("r",r,mbCap(r))).join("")}</div><div>${ch("t","","Any type")}${["rock","paper","scissors","none"].map(t=>ch("t",t,TY[t]||"Typeless")).join("")}<select class="mbs" onchange="mbF('d',this.value)"><option value="">Any dimension</option>${DIM.map((d,k)=>`<option value="${k}"${MB.d===String(k)?" selected":""}>${d[0]}</option>`).join("")}</select></div><div class="mbl"><span>Stats at level <b id="mblv">${MB.lv}</b></span><input type="range" min="5" max="100" value="${MB.lv}" oninput="mbLv(this.value)"></div>`;
+else h+=`<div>${ch("c","","All")}${[["dmg","Attack"],["buff","Buff"],["debuff","Debuff"],["cus","Special"]].map(x=>ch("c",x[0],x[1])).join("")}</div><div>${ch("t","","Any type")}${["normal","rock","paper","scissors"].map(t=>ch("t",t,TY[t]||"Normal")).join("")}</div><small class="mleg"><i class="mc-dmg"></i>Attack <i class="mc-buff"></i>Buff <i class="mc-debuff"></i>Debuff <i class="mc-cus"></i>Special. Tap a move to see what it does.</small>`;
+h+=`<small id="mbc" style="display:block;margin:8px 0 0;color:var(--mut)"></small><div id="mbl"></div>`;
+document.getElementById("a").innerHTML=h;mbL()}
+// Move categories (frame colour in battle): dmg = plain attack (orange), buff = one single buff on yourself (blue), debuff = one single debuff on the enemy (purple), cus = everything else, incl. every life-steal move (rg) like Energy Drain and Regenerate (yellow).
+const mcat=n=>{let m=MV[n],f=m.fx||[];if(m.stg||m.ps||m.rg)return"cus";if(m.p&&!f.length)return"dmg";if(!m.p&&f.length==1&&f[0][1].length==1)return f[0][0]=="self"?"buff":f[0][0]=="enemy"?"debuff":"cus";return"cus"};
+const MCN={dmg:"Attack",buff:"Buff",debuff:"Debuff",cus:"Special"};
+function mdesc(n,p){let m=MV[n],c=mcat(n),L=[];L.push(`<b>${n}</b><br><small>${TY[m.t]||"Normal"} type · ${MCN[c]}</small>`);
+(m.stg||[m]).forEach(q=>{let ch=m.stg?` (${q.acc}% chance)`:"";if(q.p)L.push(`Deals damage (base power ${q.p})${ch}.`);if(q.rg)L.push(`Absorbs enemy's health: you heal ${q.rg}% of the damage dealt.`);(q.fx||[]).forEach(x=>{let who=x[0]=="enemy"?"the enemy's":"your",up=x[0]=="self",g={};x[1].forEach(i=>{let v=STRV(x[2]);(g[v]=g[v]||[]).push(SN[i])});Object.keys(g).forEach(v=>L.push(`${up?"Raises":"Lowers"} ${who} ${g[v].join(" and ")} by ${v} (${["","weak","medium","strong"][v]})${x[3]!=null?` (${x[3]}% chance)`:ch}.`))});[].concat(q.ps||[]).forEach(k=>{let c=q.pc?` (${q.pc}% chance)`:ch;L.push(k=="poison"?`Poisons the enemy${c}: it loses 5% of its max HP after every turn until the battle ends.`:`Paralyzes the enemy${c}: every turn it has a ${Math.round(PZC*100)}% chance to be unable to move, until the battle ends.`)})});
+if(!m.stg)L.push(`Accuracy: ${m.acc?m.acc+"%":"always hits"}`);if(m.rec)L.push(`You also take recoil damage (base power ${m.rec}).`);L.push(m.ap==Infinity?`AP: unlimited. Appears only when every other move is out of AP.`:p?`AP: ${apl(p,n)} of ${m.ap} left`:`${m.ap} AP`);
+if(BEATS[m.t])L.push(`${TY[m.t]} is strong against ${TY[BEATS[m.t]]}.`);return L.join("<br>")}
+let LPT=null,LPS=false,LPU=0;
+function mdHide(){let e=document.getElementById("mdet");if(e)e.remove()}
+function mdShow(b){let p=lead()||G.mons[0],n=p&&bmv(p)[+b.dataset.mv];if(!n||!MV[n])return;LPS=true;mdHide();let e=document.createElement("div");e.id="mdet";e.className="mc-"+mcat(n);e.innerHTML=mdesc(n,p);document.body.appendChild(e)}
+function mvc(i){if(Date.now()-LPU<600)return;mv(i)}
+document.addEventListener("pointerdown",e=>{let b=e.target.closest&&e.target.closest("button[data-mv]");if(!b)return;clearTimeout(LPT);LPS=false;LPT=setTimeout(()=>mdShow(b),450)});
+const lpEnd=()=>{clearTimeout(LPT);if(LPS){LPU=Date.now();LPS=false;mdHide()}};
+document.addEventListener("pointerup",lpEnd);document.addEventListener("pointercancel",lpEnd);
+document.addEventListener("contextmenu",e=>{if(e.target.closest&&e.target.closest("button[data-mv]"))e.preventDefault()});
+function doreset(){G={mons:[],box:[],dim:0,c:100,it:{potion:3,chip:3,great:0,sens:0,pure:0,seed:0},pl:{l:1,xp:0}};save();POS=null;N="";SH=null;SM="";SEL=-1;RS=2;R()}
+function leave(){RS=0;let b=DVB&&G.user;DVB=0;DEV=b?1:0;DVM=0;S=G.user?"menu":"signup";if(!b)POS=null;R()}
+function play(){let b=document.getElementById("tpl");if(b&&b.classList.contains("fl"))return;if(b)b.classList.add("fl");setTimeout(()=>{S=G.user?"menu":"signup";R()},100)}
+addEventListener("resize",tpos);addEventListener("resize",spos);
+const SPT={storage:["📦","Storage"],shop:["🛒","Shop"],heal:["➕","Heal"],portal:["🌀","Portal"],lab:["🧪","Lab"]};
+/* Player HUD (top right of the map): black plate with level, slanted XP bar with orange chevrons, yellow nick, grey chevron strip.
+   Drawn as SVG (viewBox = the coordinates of the reference picture), so nick, level and XP are always the real ones. */
+let HUDN=0;
+const hud=()=>{const hi=++HUDN;
+const nick=String(G.user||"Player").replace(/[^\w-]/g,"").slice(0,16)||"Player",lv=G.pl.l,need=lv*100,xp=Math.max(0,Math.min(need,G.pl.xp)),p=Math.min(1,xp/need);
+const rp=(P,r)=>{let n=P.length,d="";for(let i=0;i<n;i++){let a=P[(i+n-1)%n],b=P[i],c=P[(i+1)%n],rr=Array.isArray(r)?r[i]:r,l1=Math.hypot(a[0]-b[0],a[1]-b[1]),l2=Math.hypot(c[0]-b[0],c[1]-b[1]),t1=Math.min(rr,l1/2),t2=Math.min(rr,l2/2),s=[b[0]+(a[0]-b[0])*t1/l1,b[1]+(a[1]-b[1])*t1/l1],e=[b[0]+(c[0]-b[0])*t2/l2,b[1]+(c[1]-b[1])*t2/l2];d+=(i?"L":"M")+s[0].toFixed(1)+" "+s[1].toFixed(1)+"Q"+b[0]+" "+b[1]+" "+e[0].toFixed(1)+" "+e[1].toFixed(1)}return d+"Z"};
+const plate=rp([[212,218],[2117,218],[2003,483],[85,483]],58);
+const strip=rp([[983,470],[1048,545],[1004,612],[1030,652],[1900,652],[1945,612],[1990,545],[1923,470]],[6,26,14,34,26,22,26,6]);
+const bar=rp([[794,257],[2058,257],[1960,443],[705,443]],24);
+const X0=705,X1=2058,fe=X0+p*(X1-X0),S=.85;
+let chev="";for(let k=-1;k<8;k++){let a=916+210*k;chev+=`<path d="M${a-S*93-0} 257L${a} 350L${a-S*93} 443H${a+105-S*93}L${a+105} 350L${a+105-S*93} 257Z"/>`}
+let blk="",gry="";const A=i=>1073+178.2*i;
+for(let i=0;i<6;i++){let a=A(i);blk+=`<path d="M${a-25.5-S*75} 470L${a-25.5} 545L${a-25.5-S*71} 616H${a-S*71+25.5}L${a+25.5} 545L${a+25.5-S*75} 470Z"/>`}
+const sk=Math.min(5,G.sk||0);for(let i=0;i<5;i++){let a=A(i)+25.5,b=A(i+1)-25.5;gry+=`<path fill="${i<sk?"#62cfff":"#3d4955"}"${i==sk-1?' class="hxn"':""} d="M${a-S*75} 470L${a} 545L${a-S*71} 616H${b-S*71}L${b} 545L${b-S*75} 470Z"/>`}
+const cw=c=>"ijltf.-I1!'".includes(c)?.38:"mwMW".includes(c)?.92:/[A-Z]/.test(c)?.68:.6,tw=[...nick].reduce((s,c)=>s+cw(c),0),fs=Math.min(212,Math.round(960/tw)),ds=String(lv).length,
+lf=[150,120,98][ds-1]||98,lx=[188,180,175][ds-1]||175,nf=[240,205,160][ds-1]||160,nx=[512,420,372][ds-1]||372,nl=Math.round([0,.64*nf,1.2*nf,1.75*nf][ds]||0);
+const FT=`font-family:Fredoka,'Baloo 2','Trebuchet MS',system-ui,sans-serif;font-weight:700`;
+const nt=`<text x="2062" y="205" text-anchor="end" font-size="${fs}" style="${FT}" stroke-linejoin="round">${nick}</text>`;
+const grp=`<path d="${plate}"/><path d="${strip}"/>${nt}`;
+return`<div class="hud2" role="img" aria-label="${nick}, level ${lv}, ${xp} of ${need} XP${sk?`, XP streak ${sk} of 5, +${sk*10}% XP`:""}" title="${xp} / ${need} XP${sk?` · streak ${sk}/5 (+${sk*10}% XP)`:""}"><svg viewBox="70 28 2080 686" xmlns="http://www.w3.org/2000/svg"><defs><clipPath id="hxs${hi}"><path d="${strip}"/></clipPath><clipPath id="hxb${hi}"><path d="${bar}"/></clipPath><clipPath id="hxf${hi}"><rect x="0" y="240" width="${fe.toFixed(1)}" height="220"/></clipPath></defs>
+<g fill="#000" stroke="#000" stroke-width="70" stroke-linejoin="round">${grp}</g>
+<g fill="#fff" stroke="#fff" stroke-width="56" stroke-linejoin="round">${grp}</g>
+<g fill="#000" stroke="#000" stroke-width="0">${grp.replace(nt,"")}</g>
+<path d="${strip}" fill="#000"/><g clip-path="url(#hxs${hi})">${gry}${blk.replace(/<path /g,'<path fill="#000" ')}</g>
+<path d="${plate}" fill="#000"/>
+<g clip-path="url(#hxb${hi})"><rect x="680" y="250" width="1400" height="200" fill="#4f5e6c"/><rect x="680" y="250" width="1400" height="40" fill="#414d5a"/><g clip-path="url(#hxf${hi})"><rect x="680" y="250" width="1400" height="200" fill="#fe9802"/><g fill="#fe6802">${chev}</g></g></g>
+<text x="${lx}" y="436" font-size="${lf}" fill="#fff" stroke="#fff" stroke-width="3" stroke-linejoin="round" style="${FT};font-weight:500">LVL</text><text x="${nx}" y="443" font-size="${nf}" fill="#fff" stroke="#fff" stroke-width="3" stroke-linejoin="round" style="${FT};font-weight:500"${ds>1?` textLength="${nl}" lengthAdjust="spacingAndGlyphs"`:""}>${lv}</text>
+<g stroke-linejoin="round" text-anchor="end"><text x="2062" y="205" font-size="${fs}" fill="#000" stroke="#fff" stroke-width="40" style="${FT}">${nick}</text><text x="2062" y="205" font-size="${fs}" fill="#000" stroke="#000" stroke-width="30" style="${FT}">${nick}</text><text x="2062" y="205" font-size="${fs}" fill="#fefc07" style="${FT}">${nick}</text></g></svg></div>`};
+function mapv(d){let sp=d[4],l=lead()||G.mons[0];if(!POS||POS.d!=G.dim)POS={d:G.dim,p:[sp.portal[0],sp.portal[1]],dy:85};if(!SPN||SPN.d!=G.dim)SPN={d:G.dim,pend:null,m:sp.mortys.map(()=>roll(G.dim))};return`<div class="mapfs"><div class="mapsc" id="msc"><div class="mapin"><img class="bgm" alt="Map of ${d[0]}" src="${d[3]}">`+SPN.m.map((id,i)=>id<0?"":`<button class="msp" style="left:${sp.mortys[i][0]}%;top:${sp.mortys[i][1]}%" onclick="fm(${i})" aria-label="Fight ${SP[id].n}">${SP[id].img?`<img alt="" src="${SP[id].img}">`:`<span class="big">${SP[id].e}</span>`}</button>`).join("")+Object.keys(SPT).map(k=>`<button class="spot" style="left:${sp[k][0]}%;top:${sp[k][1]}%" onclick="at('${k}')" aria-label="${SPT[k][1]}">${SPT[k][0]}</button><span class="spl" style="left:${sp[k][0]}%;top:calc(${sp[k][1]}% + 27px)">${SPT[k][1]}</span>`).join("")+`<div class="mk" id="mk" style="left:${POS.p[0]}%;top:calc(${POS.p[1]}% + ${POS.dy||0}px);${POS.c?"transform:translate(-50%,-50%)":""}"><img class="pic rick" alt="Rick" src="grafiki/characters/rick.webp"></div></div></div><div class="topr"><div class="hrow"><div class="hw">${hud()}</div><button class="pdev" onclick="devopen()" aria-label="Device"><img alt="" src="grafiki/ui/device_button.webp"></button></div></div>${DEV?devpanel():""}${N?`<div class="toast">${N}</div>`:""}</div>`}
+function cam(sm){let s=document.getElementById("msc");if(!s||!POS)return;let i=s.firstElementChild;s.scrollTo({left:i.offsetWidth*POS.p[0]/100-s.clientWidth/2,top:i.offsetHeight*POS.p[1]/100+(POS.dy||0)-s.clientHeight/2,behavior:sm?"smooth":"auto"})}
+addEventListener("resize",()=>{if(S=="menu")cam()});
+function at(k){let sp=DIM[G.dim][4],m=document.getElementById("mk");POS.p=[sp[k][0],sp[k][1]];POS.dy=0;POS.c=1;if(m){m.style.left=POS.p[0]+"%";m.style.top=POS.p[1]+"%";m.style.transform="translate(-50%,-50%)"}cam(1);setTimeout(()=>view(k=="shop"?"shopfront":k=="storage"?"stohub":k),450)}
+function fm(i){let q=DIM[G.dim][4].mortys[i],id=SPN&&SPN.m[i],m=document.getElementById("mk");if(id==null||id<0)return;POS.p=[q[0],q[1]];POS.dy=0;POS.c=1;if(m){m.style.left=POS.p[0]+"%";m.style.top=POS.p[1]+"%";m.style.transform="translate(-50%,-50%)"}cam(1);setTimeout(()=>go(G.dim,id,i),450)}
+function R(){if(S=="heal")return healscr();if(S=="lab"&&LBP==0)return labscr();if(S=="title")return title();if(S=="signup")return signup();if(S=="settings")return settings();if(S=="mba")return mba();if(S=="shopfront")return shopfront();if(S=="stohub")return stohub();if(S=="decks")return deckscr();let h="<h1>Pocket Mortys by Firejane</h1>";
+if(!G.mons.length)h+="<div class=c><b>Welcome to Mortyland</b><br><small>You start with Morty at level 5 and perfect IVs. Find wild Mortys and catch them with Manipulator Chips.</small></div><button onclick=\"begin()\">Start game</button>";
+else if(S=="menu"){let d=DIM[G.dim];if(d[4])h=mapv(d);else h+=`<div class=c><b>${d[0]}</b><br><small>Player level ${G.pl.l}, ${G.pl.xp} of ${G.pl.l*100} XP, ${G.c} Flurbos</small></div>`+(N?`<div class=c>${N}</div>`:"")+card(lead()||G.mons[0])+(`<button onclick="go(G.dim)">Find a wild Morty</button><br><button class=s onclick="view('myteam')">Team (${G.mons.length} of 5)</button><button class=s onclick="view('storage')">Storage room (${G.box.length})</button><button class=s onclick="view('shop')">Shop</button><button class=s onclick="view('heal')">Healing center</button><button class=s onclick="view('lab')">Lab</button><button class=s onclick="view('portal')">Portal</button><br><br><button class=s onclick="reset()">Reset save</button>`)}
+else if(S=="items")h+=items();
+else if(S=="nothing")h+=`<button class=s onclick="view('menu')">Back</button><div class=c><b>There is nothing here yet</b></div>`;
+else if(S=="avatars")h+=`<button class=s onclick="view('shopfront')">Back</button><div class="shop"><div class="shdr">Customize</div><div class="msg">There are no avatars for sale yet. Check back later!</div></div>`;
+else if(S=="shop"){let x=SHOP.find(y=>y.k==SH);h+=`<button class=s onclick="view('shopfront')">Back</button><div class="shop"><div class="shdr">Morty Shop</div>`+SHOP.map(y=>`<button class="it${SH==y.k?" sel":""}" onclick="pick('${y.k}')">${SI[y.k]}<span><b>${y.n}</b><small>${y.d}</small><small>You have ${G.it[y.k]}</small></span><span class="pr">${COIN}${y.p}</span></button>`).join("")+`<div class="sbar"><div class="sch">Flurbos<span>${G.c}</span></div>${x?`<button class="buyb" onclick="buyit()">Buy</button>`:""}</div><div class="msg">${SM||(x?`Buy ${x.n} for ${x.p} Flurbos?`:"Select an item to buy.")}</div></div>`}
+else if(S=="myteam")h+=`<button class=s onclick="view('menu')">Back</button>${N?`<div class=c>${N}</div>`:""}<div class=c><b>My Team (${G.mons.length} of 5)</b><br><small>Tap a Morty to see its IVs. Hold and drag a Morty to change the order. The Morty on top starts the fight.</small></div>`+G.mons.map((m,i)=>`<div class="tm${TMO.has(m)?" open":""}" data-i="${i}">${det(m)}</div>`).join("");
+else if(S=="storage")h+=EVS?evui():`<button class=s onclick="view('stohub')">Back</button><button class=s onclick="evo(1)">Evolve Mortys</button>${N?`<div class=c>${N}</div>`:""}<div class=c><b>Your team (${G.mons.length} of 5)</b><br><small>The first Morty on your team leads the fight. IVs (1–16 per stat) are fixed when a Morty is created. At low levels you only see a possible range for each IV, and it narrows as the Morty levels up.</small></div>`+G.mons.map((m,i)=>det(m,(i?`<button class=s onclick="up(${i})">Make lead</button>`:"")+(G.mons.length>1?`<button class=s onclick="toBox(${i})">Send to storage</button>`:""))).join("")+`<div class=c><b>Storage room</b><br><small>${G.box.length} in storage.</small></div>`+(SEL>=0&&G.box[SEL]?`<div class=c><b>Replace which team Morty with ${nm(G.box[SEL])}?</b></div>`+G.mons.map((m,i)=>`<button class=s onclick="swp(${i})">${nm(m)} Lv ${m.l}</button>`).join("")+`<button class=s onclick="SEL=-1;R()">Cancel</button>`:"")+G.box.map((m,i)=>det(m,G.mons.length<5?`<button onclick="toTeam(${i})">Add to team</button>`:`<button onclick="SEL=${i};R()">Replace a team Morty</button>`)).join("");
+else if(S=="lab"){if(LBP==2&&!G.mons[LBS])LBP=1;h+=LBP==2?`<button class=s onclick="LBP=1;LN=null;R()">Back</button><div class=c><b>Morty Lab</b><br><small>Choose up to 4 moves for this Morty. Tap a move to equip or unequip it. Highlighted moves are the ones your Morty takes into battle.</small></div>`+labc(G.mons[LBS],LBS):`<button class=s onclick="LBP=0;R()">Back</button><div class=c><b>Select a Morty</b><br><small>Choose a Morty from your team to change its moves.</small></div>`+G.mons.map(lbpick).join("")}
+else if(S=="heal")h+=`<button class=s onclick="view('menu')">Back</button><div class=c><b>Healing center</b><br><small>${N||"Rick’s nurses will patch up your Mortys."}</small></div><button onclick="heal()">Heal my Mortys</button>`;
+else if(S=="portal")h+=`<button class=s onclick="view('menu')">Back</button><div class=c><b>Portal</b><br><small>You are in ${DIM[G.dim][0]}. Choose where to go.</small></div>`+(N?`<div class=c>${N}</div>`:"")+DIM.map((d,i)=>`<button class="${i==G.dim||d[2]>G.pl.l?"s":""}" onclick="tp(${i})">${d[0]}${d[2]>G.pl.l?" (level "+d[2]+")":i==G.dim?" (here)":""}</button>`).join("");
+else if(S=="team")h+=`<button class=s onclick="view('menu')">Back</button><div class=c><b>${new Set(G.mons.map(m=>m.s)).size} of ${SP.length} Morty types collected</b><br><small>Your first 5 Mortys are your team and the rest are in storage. IVs (1–16 per stat) are fixed when a Morty is created and never change. At low levels you only see a possible range for each IV, and it narrows as the Morty levels up.</small></div>`+G.mons.map((m,i)=>`<div class="c r-${SP[m.s].r}"><div class="row"><span class="ico">${ic(m)}</span><div style="flex:1"><b>${nm(m)}</b><br>${rb(SP[m.s].r)} ${tb(SP[m.s].ty)} <small>Lv ${m.l}, ${i<5?"team":"storage"}</small><br><small>${ST.map((n,j)=>`${n} ${st(m,j)}`).join(" / ")}</small></div></div><div class="iv">IVs: ${ivv(m)}</div><div class="iv">Moves: ${known(m).map(n=>mlab(n)).join("; ")}</div>${SP[m.s].ls.some(x=>x[0]>m.l)?`<div class="iv">Learns: ${SP[m.s].ls.filter(x=>x[0]>m.l).map(x=>x[1]+" at Lv "+x[0]).join(", ")}</div>`:""}${m.lg?`<div class="iv">Last level-up: ${ST.map((n,j)=>`${n} +${m.lg[j]}`).join(", ")}</div>`:""}${i?`<button class="s" onclick="up(${i})">Make lead</button>`:""}</div>`).join("");
+else if(S=="battle"){let p=lead()||G.mons[0];h+=(B.caught?`<div class=c><b>Caught!</b> ${nm(B.caught)} was added to ${B.where}.<br><small>${ivv(B.caught)}</small></div>`:card(B.e))+card(p)+`<div class="c log">${B.log.join("<br>")}</div>`;
+h+=B.over?`<button onclick="run()">Continue</button>`:bmv(p).map((n,i)=>`<button class="mvx mc-${mcat(n)}${apl(p,n)<1||B.busy?" mvo":""}" data-mv="${i}" onclick="mvc(${i})">${mlab(n,p)}</button>`).join("")+`<br><small class="mleg"><i class="mc-dmg"></i>Attack <i class="mc-buff"></i>Buff <i class="mc-debuff"></i>Debuff <i class="mc-cus"></i>Special. Hold a move to see what it does.</small><br>`+`<button onclick="cg()"${B.busy?" disabled":""}>Manipulator Chip (${G.it.chip})</button><button class=s onclick="pt('potion')"${B.busy?" disabled":""}>Serum (${G.it.potion})</button>${["great","sens","pure"].filter(k=>G.it[k]>0).map(k=>`<button class=s onclick="pt('${k}')"${B.busy?" disabled":""}>${HEAL[k][1]} (${G.it[k]})</button>`).join("")}<button class=s onclick="sw()"${B.busy?" disabled":""}>Swap</button><button class=s onclick="run()"${B.busy?" disabled":""}>Run</button><br><small>The chip only works when the wild Morty is at 40% HP or less.</small>`}
+else h+=(N?`<div class=c>${N}</div>`:"")+`<div class=c><b>Player level ${G.pl.l}</b><br><small>${G.pl.xp} of ${G.pl.l*100} XP, ${G.c} Flurbos</small></div>`+card(lead()||G.mons[0])+"<b>Travel to a dimension</b><br>"+DIM.map((d,i)=>`<button class="${d[2]>G.pl.l?"s":""}" onclick="go(${i})">${d[0]}${d[2]>G.pl.l?" (level "+d[2]+")":""}</button>`).join("")+`<br><br><button class=s onclick="view('team')">Collection (${G.mons.length})</button><button class=s onclick="view('shop')">Shop</button><button class=s onclick="heal()">Heal team</button><button class=s onclick="reset()">Reset save</button>`;
+document.getElementById("a").innerHTML=h;if(S=="menu")cam();if(S=="myteam")tmInit()}
+document.addEventListener("click",e=>{let b=e.target.closest&&e.target.closest("button");if(!b||b.dataset.go||b.id=="tpl"||b.id=="suplay"||b.classList.contains("buyb")||b.classList.contains("sbtn")||b.classList.contains("hbtn"))return;e.stopImmediatePropagation();e.preventDefault();if(b.dataset.ff)return;b.dataset.ff=1;b.classList.add("flash");setTimeout(()=>{b.classList.remove("flash");delete b.dataset.ff;b.dataset.go=1;b.click();delete b.dataset.go},100)},true);
+R();
+</script></body></html>
